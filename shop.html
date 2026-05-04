@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shop — Baseerah Institute</title>
+  <meta name="description" content="Publications by Shaykhah Rukayya Samsodien — Hifth Guides, Fiqh texts, and the Muhadathah Conversational Arabic workbook series."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --teal:#009EA8;--teal-mid:#007A82;--teal-light:#E0F5F7;--teal-faint:#EFF9FA;
+      --charcoal:#1A1A2E;--cream:#FAF8F4;--cream-warm:#F2EDE4;--cream-deep:#E8E0D3;
+      --gold:#B8872E;--gold-light:#F5EDD8;
+      --text:#3A3848;--text-mid:#6B6880;--text-light:#9896AA;
+      --r-sm:12px;--r-md:24px;--r-lg:40px;--r-xl:60px;
+      --shadow:0 8px 40px rgba(26,26,46,.09);--shadow-sm:0 4px 20px rgba(26,26,46,.06);
+      --trans:0.35s cubic-bezier(.4,0,.2,1);--max:1160px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.65;overflow-x:hidden}
+    img{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
+    ul{list-style:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
+    .eyebrow{font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal)}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:15px 32px;border-radius:100px;cursor:pointer;transition:var(--trans);white-space:nowrap;border:none}
+    .btn-primary{background:var(--teal);color:white}
+    .btn-primary:hover{background:var(--teal-mid);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,158,168,.3)}
+    .btn-outline{background:transparent;color:var(--teal);border:1.5px solid var(--teal)}
+    .btn-outline:hover{background:var(--teal);color:white;transform:translateY(-2px)}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
+```
+/* Nav */
+.bar{background:var(--charcoal);color:rgba(255,255,255,.7);text-align:center;padding:11px 24px;font-size:12.5px}
+.bar a{color:var(--teal);font-weight:600}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,248,244,.94);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.05)}
+.nav-wrap{display:flex;align-items:center;justify-content:space-between;height:70px;padding:0 32px}
+.logo img{height:44px}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{font-size:13px;font-weight:500;color:var(--text-mid);transition:color var(--trans);position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--teal);transition:width var(--trans)}
+.nav-links a:hover,.nav-links a.active{color:var(--teal)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.hamburger{display:none;flex-direction:column;background:none;border:none;cursor:pointer;padding:8px;width:40px;height:40px;position:relative}
+.hamburger span{display:block;width:22px;height:2px;border-radius:2px;background:var(--charcoal);transition:transform .35s ease,opacity .25s ease;position:absolute;left:9px}
+.hamburger span:nth-child(1){top:13px}.hamburger span:nth-child(2){top:19px}.hamburger span:nth-child(3){top:25px}
+.hamburger.open span:nth-child(1){transform:rotate(45deg);top:19px}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg);top:19px}
+.mob{position:fixed;inset:0;z-index:190;background:rgba(8,10,22,.92);backdrop-filter:blur(32px);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s ease}
+.mob.open{opacity:1;pointer-events:all}
+.mob-links{display:flex;flex-direction:column;align-items:center;width:100%;max-width:400px}
+.mob-links a{font-family:'Cormorant Garamond',serif;font-size:38px;font-style:italic;color:rgba(255,255,255,.85);text-align:center;padding:16px 0;width:100%;border-bottom:1px solid rgba(255,255,255,.07);transition:color .25s}
+.mob-links a:first-child{border-top:1px solid rgba(255,255,255,.07)}
+.mob-links a:hover{color:var(--teal)}
+.mob-foot{position:absolute;bottom:40px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.mob-foot a{font-size:12px;color:rgba(255,255,255,.38)}
+.wave{display:block;width:100%;overflow:hidden;line-height:0}
+.wave svg{display:block;width:100%}
+
+/* Page hero */
+.page-hero{background:var(--charcoal);padding:120px 0 80px;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;top:-80px;right:-80px;width:500px;height:500px;background:radial-gradient(ellipse,rgba(0,158,168,.15) 0%,transparent 68%);border-radius:55% 45% 40% 60%;pointer-events:none}
+.page-hero .eyebrow{display:block;margin-bottom:16px}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,6vw,80px);font-weight:300;font-style:italic;color:white;line-height:1.05;margin-bottom:20px}
+.page-hero h1 em{font-style:normal;color:var(--teal)}
+.page-hero p{font-size:16px;color:rgba(255,255,255,.6);max-width:560px;line-height:1.78}
+
+/* Notice banner */
+.notice{background:var(--teal-faint);border:1.5px solid var(--teal-light);border-radius:var(--r-md);padding:20px 24px;margin-bottom:40px;display:flex;align-items:flex-start;gap:14px}
+.notice-icon{font-size:20px;flex-shrink:0;margin-top:2px}
+.notice p{font-size:14px;color:var(--teal-mid);line-height:1.7}
+.notice p strong{color:var(--teal);font-weight:600}
+.notice p a{color:var(--teal);font-weight:600;text-decoration:underline}
+
+/* Filter */
+.filter-tabs{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
+.ftab{font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 22px;border-radius:100px;border:1.5px solid var(--cream-deep);background:white;color:var(--text-mid);cursor:pointer;transition:var(--trans)}
+.ftab:hover,.ftab.active{background:var(--teal);color:white;border-color:var(--teal)}
+
+/* Product grid */
+.shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.product{background:white;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-sm);transition:transform var(--trans),box-shadow var(--trans);display:flex;flex-direction:column}
+.product:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
+.product-img{height:260px;overflow:hidden;position:relative;background:var(--cream-warm);display:flex;align-items:center;justify-content:center}
+.product-img img{width:100%;height:100%;object-fit:cover;transition:transform var(--trans)}
+.product:hover .product-img img{transform:scale(1.04)}
+.product-img.placeholder-img{flex-direction:column;gap:8px}
+.product-img.placeholder-img span{font-size:48px}
+.product-img.placeholder-img p{font-size:11px;color:var(--text-light);font-weight:500;letter-spacing:.06em}
+.product-badge{position:absolute;top:14px;left:14px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 12px;border-radius:100px;color:white}
+.product-badge.teal{background:var(--teal)}
+.product-badge.gold{background:var(--gold)}
+.product-badge.new{background:var(--charcoal)}
+.product-body{padding:24px;flex:1;display:flex;flex-direction:column}
+.product-body .eyebrow{display:block;margin-bottom:8px}
+.product-body h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--charcoal);margin-bottom:8px;line-height:1.3}
+.product-body p{font-size:13.5px;color:var(--text-mid);line-height:1.72;flex:1;margin-bottom:16px}
+.product-footer{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid var(--cream-deep);margin-top:auto}
+.product-price{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--charcoal)}
+.product-price small{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;color:var(--text-light);letter-spacing:.06em;text-transform:uppercase;display:block;margin-top:2px}
+.product-actions{display:flex;gap:10px}
+
+/* Enquiry modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(8,10,22,.7);backdrop-filter:blur(12px);z-index:300;opacity:0;pointer-events:none;transition:opacity .35s ease;display:flex;align-items:center;justify-content:center;padding:24px}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:white;border-radius:var(--r-xl);padding:40px;max-width:520px;width:100%;position:relative;transform:translateY(20px);transition:transform .35s ease}
+.modal-overlay.open .modal{transform:translateY(0)}
+.modal-close{position:absolute;top:20px;right:20px;width:32px;height:32px;border-radius:50%;background:var(--cream-deep);border:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:var(--text-mid)}
+.modal h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--charcoal);margin-bottom:8px}
+.modal-book{font-size:13px;color:var(--teal);font-weight:600;margin-bottom:20px}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.form-group label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-mid)}
+.form-group input,.form-group select,.form-group textarea{font-family:'DM Sans',sans-serif;font-size:14px;padding:12px 16px;border:1.5px solid var(--cream-deep);border-radius:12px;background:var(--cream);color:var(--text);transition:border-color var(--trans);outline:none}
+.form-group input:focus,.form-group select:focus{border-color:var(--teal)}
+.form-note{font-size:12px;color:var(--text-light);margin-top:10px;line-height:1.6}
+
+/* Where to buy */
+.stockists{padding:80px 0 100px;background:var(--cream-warm)}
+.stockists-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px}
+.stockist-card{background:white;border-radius:var(--r-lg);padding:32px;box-shadow:var(--shadow-sm)}
+.stockist-icon{font-size:32px;margin-bottom:16px}
+.stockist-card h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--charcoal);margin-bottom:8px}
+.stockist-card p{font-size:14px;color:var(--text-mid);line-height:1.75;margin-bottom:16px}
+.stockist-card address{font-style:normal;font-size:13.5px;color:var(--text-mid);line-height:1.8;background:var(--cream);padding:14px 18px;border-radius:12px;margin-top:12px}
+
+/* Footer */
+footer{background:var(--charcoal);padding:60px 0 32px}
+.ftop{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:60px;margin-bottom:40px}
+.fb img{height:48px;margin-bottom:14px;opacity:.8}
+.fb p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.85;max-width:270px;margin-bottom:18px}
+.fsoc{display:flex;gap:10px}
+.fs{width:34px;height:34px;border-radius:10px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;transition:var(--trans)}
+.fs:hover{border-color:var(--teal);background:rgba(0,158,168,.15)}
+.fc h5{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:18px}
+.fc li{margin-bottom:10px}
+.fc a{font-size:13px;color:rgba(255,255,255,.36);transition:color var(--trans)}
+.fc a:hover{color:var(--teal)}
+.fbot{padding-top:24px;border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.fbot span{font-size:12px;color:rgba(255,255,255,.26)}
+.fbot a{color:var(--teal)}
+
+@media(max-width:960px){
+  .nav-links,.nav-links+.btn{display:none}
+  .hamburger{display:flex}
+  .shop-grid{grid-template-columns:repeat(2,1fr)}
+  .stockists-grid{grid-template-columns:1fr}
+  .ftop{grid-template-columns:1fr;gap:32px}
+  .fbot{flex-direction:column;text-align:center}
+}
+@media(max-width:600px){
+  .wrap{padding:0 20px}
+  .shop-grid{grid-template-columns:1fr}
+}
+```
+
+  </style>
+</head>
+<body>
+
+<div class="bar">📚 Publications also available at Chapter 96 Bookz, Lansdowne · <a href="#stockists">Find a copy →</a></div>
+
+<nav>
+  <div class="nav-wrap">
+    <a href="index.html" class="logo"><img src="logo-colour.png" alt="Baseerah Institute"/></a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="courses.html">Courses</a>
+      <a href="about.html#teacher">Our Teacher</a>
+      <a href="index.html#events">Events</a>
+      <a href="shop.html" class="active">Shop</a>
+      <a href="blog.html">Blog</a>
+      <a href="donate.html">Donate</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="courses.html" class="btn btn-primary" style="margin-left:20px">Register Now</a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mob" id="mobMenu">
+  <nav class="mob-links">
+    <a href="about.html"         class="mob-link">About</a>
+    <a href="courses.html"       class="mob-link">Courses</a>
+    <a href="about.html#teacher" class="mob-link">Our Teacher</a>
+    <a href="index.html#events"  class="mob-link">Events</a>
+    <a href="shop.html"          class="mob-link">Shop</a>
+    <a href="blog.html"          class="mob-link">Blog</a>
+    <a href="donate.html"        class="mob-link">Donate</a>
+    <a href="contact.html"       class="mob-link">Contact</a>
+  </nav>
+  <div class="mob-foot">
+    <a href="tel:+27672144963">+27 067 214 4963</a>
+    <a href="mailto:baseerahinstitute.sa@gmail.com">baseerahinstitute.sa@gmail.com</a>
+  </div>
+</div>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Publications & Books</span>
+      <h1>Words that<br/><em>carry knowledge.</em></h1>
+      <p>Books authored by Shaykhah Rukayya Samsodien — designed to be studied, gifted, and kept. Available for collection from Baseerah Institute and at Chapter 96 Bookz, Lansdowne.</p>
+    </div>
+  </div>
+</section>
+
+<div class="wave" style="background:var(--charcoal)">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#FAF8F4"/>
+  </svg>
+</div>
+
+<!-- Products -->
+
+<section style="padding:80px 0 100px;background:var(--cream)">
+  <div class="wrap">
+
+```
+<div class="notice reveal">
+  <div class="notice-icon">📦</div>
+  <p><strong>Collection only for now.</strong> All orders are collected from Baseerah Institute at Masjid al-Salaam, Athlone, or from Chapter 96 Bookz in Lansdowne. To order, click "Enquire to Order" on any book — we'll confirm availability and arrange collection. <a href="contact.html">Questions? Contact us.</a></p>
+</div>
+
+<div class="filter-tabs reveal">
+  <button class="ftab active" data-filter="all">All Books</button>
+  <button class="ftab" data-filter="hifth">Hifth</button>
+  <button class="ftab" data-filter="fiqh">Fiqh</button>
+  <button class="ftab" data-filter="arabic">Arabic</button>
+</div>
+
+<div class="shop-grid">
+
+  <!-- Muhadathah Book 1 -->
+  <div class="product reveal" data-cat="arabic">
+    <div class="product-img">
+      <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80" alt="Muhadathah Workbook 1"/>
+      <span class="product-badge teal">Bestseller</span>
+    </div>
+    <div class="product-body">
+      <span class="eyebrow">Conversational Arabic</span>
+      <h3>Muhadathah Workbook 1 — Take the Leap to Speak</h3>
+      <p>The first in the Conversational Arabic series. Designed to unlock Arabic fluency immediately through bite-sized, practical lessons. Adopted by many Hifth schools across SA.</p>
+      <div class="product-footer">
+        <div class="product-price">R220<small>per copy</small></div>
+        <div class="product-actions">
+          <button class="btn btn-primary" onclick="openModal('Muhadathah Workbook 1 — Take the Leap to Speak','R220')">Order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Muhadathah Book 2 -->
+  <div class="product reveal" data-cat="arabic">
+    <div class="product-img">
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80" alt="Muhadathah Workbook 2"/>
+      <span class="product-badge new">New</span>
+    </div>
+    <div class="product-body">
+      <span class="eyebrow">Conversational Arabic</span>
+      <h3>Muhadathah Workbook 2 — Take the Leap to Speak</h3>
+      <p>The continuation of the Leap to Speak series. Builds on Book 1 with expanded vocabulary, more complex conversations, and practical real-world scenarios.</p>
+      <div class="product-footer">
+        <div class="product-price">R220<small>per copy</small></div>
+        <div class="product-actions">
+          <button class="btn btn-primary" onclick="openModal('Muhadathah Workbook 2 — Take the Leap to Speak','R220')">Order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hifth Guide 1 -->
+  <div class="product reveal" data-cat="hifth">
+    <div class="product-img placeholder-img">
+      <span>📗</span>
+      <p>Cover image coming soon</p>
+    </div>
+    <div class="product-body">
+      <span class="eyebrow">Hifth</span>
+      <h3>Hifth Guide: Assisting Your Loved Ones Along Their Hifth Journey</h3>
+      <p>A practical guide for parents and family members supporting a Hifth student — written with wisdom, warmth, and years of teaching experience.</p>
+      <div class="product-footer">
+        <div class="product-price">TBC<small>enquire for price</small></div>
+        <div class="product-actions">
+          <button class="btn btn-outline" onclick="openModal('Hifth Guide: Assisting Your Loved Ones','TBC')">Enquire</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hifth Guide 2 -->
+  <div class="product reveal" data-cat="hifth">
+    <div class="product-img placeholder-img">
+      <span>📘</span>
+      <p>Cover image coming soon</p>
+    </div>
+    <div class="product-body">
+      <span class="eyebrow">Hifth</span>
+      <h3>Hifth Guide: An Educator's Manual</h3>
+      <p>Written for Hifth teachers and madrasah educators. A comprehensive manual covering methodology, student management, and curriculum planning for Hifth programmes.</p>
+      <div class="product-footer">
+        <div class="product-price">TBC<small>enquire for price</small></div>
+        <div class="product-actions">
+          <button class="btn btn-outline" onclick="openModal("Hifth Guide: An Educator's Manual",'TBC')">Enquire</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fiqh Book 1 -->
+  <div class="product reveal" data-cat="fiqh">
+    <div class="product-img placeholder-img">
+      <span>📙</span>
+      <p>Cover image coming soon</p>
+    </div>
+    <div class="product-body">
+      <span class="eyebrow">Fiqh</span>
+      <h3>Al-Fiqh Al-Manhajī: The Book of Purification</h3>
+      <p>An accessible English-language study of the laws of purification according to the Shāfi'ī school — clearly structured for students new to Islamic jurisprudence.</p>
+      <div class="product-footer">
+        <div class="product-price">TBC<small>enquire for price</small></div>
+        <div class="product-actions">
+          <button class="btn btn-outline" onclick="openModal('Al-Fiqh Al-Manhajī: The Book of Purification','TBC')">Enquire</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fiqh Book 2 -->
+  <div class="product reveal" data-cat="fiqh">
+    <div class="product-img placeholder-img">
+      <span>📕</span>
+      <p>Cover image coming soon</p>
+    </div>
+    <div class="product-body">
+      <span class="eyebrow">Fiqh</span>
+      <h3>Al-Fiqh Al-Manhajī: The Book of Prayer</h3>
+      <p>A clear, structured study of the laws of ṣalāh — covering conditions, pillars, and common questions, written for English-speaking students of Islamic jurisprudence.</p>
+      <div class="product-footer">
+        <div class="product-price">TBC<small>enquire for price</small></div>
+        <div class="product-actions">
+          <button class="btn btn-outline" onclick="openModal('Al-Fiqh Al-Manhajī: The Book of Prayer','TBC')">Enquire</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+```
+
+  </div>
+</section>
+
+<!-- Stockists -->
+
+<div class="wave" style="background:var(--cream)">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,20 C480,60 960,0 1440,40 L1440,60 L0,60 Z" fill="#F2EDE4"/>
+  </svg>
+</div>
+
+<section class="stockists" id="stockists">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:8px" class="reveal">
+      <span class="eyebrow">Where to Find Us</span>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,48px);font-weight:300;color:var(--charcoal);margin-top:12px">Available at <em style="font-style:italic;color:var(--teal)">two locations</em></h2>
+    </div>
+    <div class="stockists-grid">
+      <div class="stockist-card reveal">
+        <div class="stockist-icon">🏫</div>
+        <h3>Baseerah Institute</h3>
+        <p>Collect directly from us during class hours. Place your order online and we'll arrange a convenient collection time.</p>
+        <address>
+          Masjid al-Salaam (upstairs)<br/>
+          34 St Athans Road, Athlone<br/>
+          Cape Town, 7764<br/><br/>
+          +27 067 214 4963
+        </address>
+      </div>
+      <div class="stockist-card reveal">
+        <div class="stockist-icon">📚</div>
+        <h3>Chapter 96 Bookz</h3>
+        <p>Both Muhadathah Workbooks are now available off the shelf at Chapter 96 Bookz in Lansdowne. No pre-order needed.</p>
+        <address>
+          Unit 14, 16 Flamingo Crescent<br/>
+          Lansdowne, Cape Town<br/><br/>
+          Walk in during store hours.
+        </address>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Order Enquiry Modal -->
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3>Order Enquiry</h3>
+    <p class="modal-book" id="modalBookTitle">Book title here</p>
+    <form name="book-order" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="book-order"/>
+      <input type="hidden" name="book" id="modalBookInput"/>
+      <div class="form-group">
+        <label>Your Name *</label>
+        <input type="text" name="name" required placeholder="Full name"/>
+      </div>
+      <div class="form-group">
+        <label>WhatsApp / Phone *</label>
+        <input type="tel" name="phone" required placeholder="+27 ..."/>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Optional"/>
+      </div>
+      <div class="form-group">
+        <label>Quantity</label>
+        <input type="number" name="qty" value="1" min="1" max="20"/>
+      </div>
+      <div class="form-group">
+        <label>Collection preference</label>
+        <select name="collection">
+          <option>Baseerah Institute (Athlone)</option>
+          <option>Chapter 96 Bookz (Lansdowne)</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px">Submit Order</button>
+      <p class="form-note">We'll confirm your order and collection details within 1 business day. جزاكم الله خيرًا</p>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="ftop">
+      <div class="fb">
+        <img src="logo-white.png" alt="Baseerah Institute"/>
+        <p>A female-led Islamic institution in Cape Town. Founded 2016.</p>
+        <div class="fsoc">
+          <a href="https://instagram.com/baseerahinstitute" class="fs" target="_blank">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,.5)" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="fc">
+        <h5>Books</h5>
+        <ul>
+          <li><a href="shop.html">Muhadathah Series</a></li>
+          <li><a href="shop.html">Hifth Guides</a></li>
+          <li><a href="shop.html">Fiqh Texts</a></li>
+          <li><a href="#stockists">Where to Buy</a></li>
+        </ul>
+      </div>
+      <div class="fc">
+        <h5>Institute</h5>
+        <ul>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© 2026 Baseerah Institute · NPC 2026/317298/08</span>
+      <span><a href="mailto:baseerahinstitute.sa@gmail.com">baseerahinstitute.sa@gmail.com</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const h=document.getElementById('hamburger'),m=document.getElementById('mobMenu');
+  h.addEventListener('click',()=>{const o=m.classList.toggle('open');h.classList.toggle('open');document.body.style.overflow=o?'hidden':''});
+  document.querySelectorAll('.mob-link').forEach(l=>l.addEventListener('click',()=>{m.classList.remove('open');h.classList.remove('open');document.body.style.overflow=''}));
+
+  // Filter
+  document.querySelectorAll('.ftab').forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('active'));
+      tab.classList.add('active');
+      const f=tab.dataset.filter;
+      document.querySelectorAll('.product').forEach(p=>{
+        p.style.display=(f==='all'||p.dataset.cat.includes(f))?'':'none';
+      });
+    });
+  });
+
+  // Modal
+  function openModal(title,price){
+    document.getElementById('modalBookTitle').textContent=title+' — '+price;
+    document.getElementById('modalBookInput').value=title;
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function closeModal(){
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow='';
+  }
+  document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal()});
+
+  const obs=new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}}),{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>

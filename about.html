@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — Baseerah Institute</title>
+  <meta name="description" content="Learn about Baseerah Institute, founded in 2016 by Shaykhah Rukayya Samsodien — a female-led Islamic institution in Cape Town."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --teal:#009EA8;--teal-mid:#007A82;--teal-light:#E0F5F7;--teal-faint:#EFF9FA;
+      --charcoal:#1A1A2E;--cream:#FAF8F4;--cream-warm:#F2EDE4;--cream-deep:#E8E0D3;
+      --gold:#B8872E;--gold-light:#F5EDD8;
+      --text:#3A3848;--text-mid:#6B6880;--text-light:#9896AA;
+      --r-sm:12px;--r-md:24px;--r-lg:40px;--r-xl:60px;
+      --shadow:0 8px 40px rgba(26,26,46,.09);--shadow-sm:0 4px 20px rgba(26,26,46,.06);
+      --trans:0.35s cubic-bezier(.4,0,.2,1);--max:1160px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.65;overflow-x:hidden}
+    img{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
+    ul{list-style:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
+    .eyebrow{font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal)}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:15px 32px;border-radius:100px;cursor:pointer;transition:var(--trans);white-space:nowrap;border:none}
+    .btn-primary{background:var(--teal);color:white}
+    .btn-primary:hover{background:var(--teal-mid);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,158,168,.3)}
+    .btn-outline{background:transparent;color:var(--teal);border:1.5px solid var(--teal)}
+    .btn-outline:hover{background:var(--teal);color:white;transform:translateY(-2px)}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    @keyframes blobf{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(18px,-14px) scale(1.03)}66%{transform:translate(-14px,18px) scale(.97)}}
+
+```
+/* Nav */
+.bar{background:var(--charcoal);color:rgba(255,255,255,.7);text-align:center;padding:11px 24px;font-size:12.5px}
+.bar a{color:var(--teal);font-weight:600}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,248,244,.94);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.05)}
+.nav-wrap{display:flex;align-items:center;justify-content:space-between;height:70px;padding:0 32px}
+.logo img{height:44px;width:auto}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{font-size:13px;font-weight:500;color:var(--text-mid);transition:color var(--trans);position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--teal);transition:width var(--trans)}
+.nav-links a:hover,.nav-links a.active{color:var(--teal)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.hamburger{display:none;flex-direction:column;justify-content:center;background:none;border:none;cursor:pointer;padding:8px;width:40px;height:40px;position:relative}
+.hamburger span{display:block;width:22px;height:2px;border-radius:2px;background:var(--charcoal);transition:transform .35s ease,opacity .25s ease;position:absolute;left:9px}
+.hamburger span:nth-child(1){top:13px}
+.hamburger span:nth-child(2){top:19px}
+.hamburger span:nth-child(3){top:25px}
+.hamburger.open span:nth-child(1){transform:rotate(45deg);top:19px}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg);top:19px}
+.mob{position:fixed;inset:0;z-index:190;background:rgba(8,10,22,.92);backdrop-filter:blur(32px);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s ease}
+.mob.open{opacity:1;pointer-events:all}
+.mob-links{display:flex;flex-direction:column;align-items:center;width:100%;max-width:400px}
+.mob-links a{font-family:'Cormorant Garamond',serif;font-size:38px;font-style:italic;color:rgba(255,255,255,.85);text-align:center;padding:16px 0;width:100%;border-bottom:1px solid rgba(255,255,255,.07);transition:color .25s}
+.mob-links a:first-child{border-top:1px solid rgba(255,255,255,.07)}
+.mob-links a:hover{color:var(--teal)}
+.mob-foot{position:absolute;bottom:40px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.mob-foot a{font-size:12px;color:rgba(255,255,255,.38)}
+.wave{display:block;width:100%;overflow:hidden;line-height:0}
+.wave svg{display:block;width:100%}
+
+/* Page hero */
+.page-hero{background:var(--charcoal);padding:120px 0 80px;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;top:-80px;right:-80px;width:500px;height:500px;background:radial-gradient(ellipse,rgba(0,158,168,.15) 0%,transparent 68%);border-radius:55% 45% 40% 60%/50% 60% 40% 50%;animation:blobf 12s ease-in-out infinite;pointer-events:none}
+.page-hero .eyebrow{display:block;margin-bottom:16px}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,6vw,80px);font-weight:300;font-style:italic;color:white;line-height:1.05;margin-bottom:20px}
+.page-hero h1 em{font-style:normal;color:var(--teal)}
+.page-hero p{font-size:16px;color:rgba(255,255,255,.6);max-width:560px;line-height:1.78}
+
+/* Mission section */
+.mission{padding:100px 0;position:relative;overflow:hidden}
+.mission::before{content:'';position:absolute;top:-60px;right:-100px;width:450px;height:450px;background:radial-gradient(ellipse,var(--teal-faint) 0%,transparent 68%);border-radius:55% 45% 40% 60%;animation:blobf 14s ease-in-out infinite;pointer-events:none}
+.mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:2}
+.mission-text .eyebrow{display:block;margin-bottom:16px}
+.mission-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,54px);font-weight:300;color:var(--charcoal);line-height:1.12;margin-bottom:24px}
+.mission-text h2 em{font-style:italic;color:var(--teal)}
+.mission-text p{font-size:15px;color:var(--text-mid);line-height:1.85;margin-bottom:16px}
+.mission-text p strong{color:var(--text);font-weight:500}
+.mission-ayah{margin-top:28px;padding:24px 28px;background:var(--charcoal);border-radius:var(--r-md);border-left:3px solid var(--teal)}
+.mission-ayah p{font-family:'Noto Naskh Arabic',serif;font-size:20px;color:white;text-align:right;direction:rtl;margin-bottom:8px}
+.mission-ayah small{font-size:12px;color:rgba(255,255,255,.4);letter-spacing:.08em}
+.mission-img{border-radius:60% 40% 55% 45%/45% 55% 40% 60%;overflow:hidden;aspect-ratio:4/5;box-shadow:var(--shadow)}
+.mission-img img{width:100%;height:100%;object-fit:cover;transition:transform .9s ease}
+.mission-img:hover img{transform:scale(1.04)}
+
+/* Values */
+.values{padding:80px 0 100px;background:var(--cream-warm)}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.val-card{background:white;border-radius:var(--r-lg);padding:32px;box-shadow:var(--shadow-sm);transition:transform var(--trans),box-shadow var(--trans)}
+.val-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.val-icon{width:52px;height:52px;border-radius:16px;background:var(--teal-faint);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px}
+.val-card h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--charcoal);margin-bottom:10px}
+.val-card p{font-size:14px;color:var(--text-mid);line-height:1.78}
+.sec-head{text-align:center;margin-bottom:8px}
+.sec-head .eyebrow{display:block;margin-bottom:14px}
+.sec-head h2{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4vw,50px);font-weight:300;color:var(--charcoal)}
+.sec-head h2 em{font-style:italic;color:var(--teal)}
+.sec-head p{font-size:15px;color:var(--text-mid);max-width:480px;margin:12px auto 0;line-height:1.75}
+
+/* Shaykhah feature */
+.shaykhah{padding:100px 0;background:var(--charcoal);position:relative;overflow:hidden}
+.sh-water{position:absolute;right:-60px;top:50%;transform:translateY(-50%);font-family:'Noto Naskh Arabic',serif;font-size:380px;line-height:1;color:rgba(255,255,255,.025);pointer-events:none;user-select:none}
+.sh-blob{position:absolute;top:-100px;left:-120px;width:500px;height:500px;background:radial-gradient(ellipse,rgba(0,158,168,.1) 0%,transparent 68%);border-radius:55% 45% 40% 60%/50% 60% 40% 50%;animation:blobf 11s ease-in-out infinite}
+.sh-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:80px;align-items:center;position:relative;z-index:2}
+.sh-img-wrap{position:relative}
+.sh-frame{border-radius:45% 55% 60% 40%/55% 45% 60% 40%;overflow:hidden;aspect-ratio:3/4;box-shadow:0 24px 80px rgba(0,0,0,.45)}
+.sh-frame img{width:100%;height:100%;object-fit:cover;opacity:.85}
+.sh-cred{position:absolute;bottom:-20px;right:-20px;background:var(--teal);border-radius:var(--r-md);padding:20px 22px;max-width:210px;box-shadow:0 8px 32px rgba(0,158,168,.35)}
+.sh-cred p{font-size:12px;color:white;line-height:1.65}
+.sh-text .eyebrow{display:block;margin-bottom:18px}
+.sh-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,3.8vw,52px);font-weight:300;font-style:italic;color:white;line-height:1.1;margin-bottom:28px}
+.sh-text p{font-size:15px;color:rgba(255,255,255,.6);line-height:1.85;margin-bottom:16px}
+.sh-text p strong{color:rgba(255,255,255,.88);font-weight:500}
+.sh-pubs{margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08)}
+.sh-pubs h4{font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
+.sh-pubs li{font-size:13px;color:rgba(255,255,255,.45);padding:7px 0 7px 18px;position:relative;border-bottom:1px solid rgba(255,255,255,.04)}
+.sh-pubs li::before{content:'—';position:absolute;left:0;color:var(--teal)}
+.sh-text .btn{margin-top:24px}
+
+/* Teachers grid */
+.teachers{padding:100px 0;background:var(--cream)}
+.teachers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px}
+.tc{background:white;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-sm);transition:transform var(--trans),box-shadow var(--trans)}
+.tc:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.tc-img{height:260px;overflow:hidden;position:relative;background:var(--teal-faint)}
+.tc-img img{width:100%;height:100%;object-fit:cover;filter:saturate(.8);transition:filter var(--trans)}
+.tc:hover .tc-img img{filter:saturate(1)}
+.tc-img.placeholder{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px}
+.tc-img.placeholder .ph-icon{width:72px;height:72px;border-radius:50%;background:var(--teal-light);display:flex;align-items:center;justify-content:center;font-size:28px}
+.tc-img.placeholder p{font-size:12px;color:var(--teal-mid);font-weight:500;letter-spacing:.06em}
+.tc-body{padding:24px}
+.tc-body h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--charcoal);margin-bottom:4px}
+.tc-body .role{font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;display:block}
+.tc-body p{font-size:13.5px;color:var(--text-mid);line-height:1.72}
+.tc-body.coming{text-align:center;padding:32px 24px}
+.tc-body.coming h3{color:var(--text-mid);font-style:italic}
+.tc-body.coming p{font-size:12.5px}
+
+/* Footer */
+footer{background:var(--charcoal);padding:60px 0 32px}
+.ftop{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:60px;margin-bottom:40px}
+.fb img{height:48px;margin-bottom:14px;opacity:.8}
+.fb p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.85;max-width:270px;margin-bottom:18px}
+.fsoc{display:flex;gap:10px}
+.fs{width:34px;height:34px;border-radius:10px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;transition:var(--trans)}
+.fs:hover{border-color:var(--teal);background:rgba(0,158,168,.15)}
+.fc h5{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:18px}
+.fc li{margin-bottom:10px}
+.fc a{font-size:13px;color:rgba(255,255,255,.36);transition:color var(--trans)}
+.fc a:hover{color:var(--teal)}
+.fbot{padding-top:24px;border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.fbot span{font-size:12px;color:rgba(255,255,255,.26)}
+.fbot a{color:var(--teal)}
+
+@media(max-width:960px){
+  .nav-links,.nav-links+.btn{display:none}
+  .hamburger{display:flex}
+  .mission-grid,.sh-grid{grid-template-columns:1fr;gap:48px}
+  .mission-img{order:-1}
+  .sh-cred{right:0;bottom:-12px}
+  .values-grid{grid-template-columns:1fr}
+  .teachers-grid{grid-template-columns:1fr}
+  .ftop{grid-template-columns:1fr;gap:32px}
+  .fbot{flex-direction:column;text-align:center}
+}
+@media(max-width:640px){.wrap{padding:0 20px}}
+```
+
+  </style>
+</head>
+<body>
+
+<div class="bar">🌿 Conversational Arabic — 6-Week Course, Sundays · <a href="courses.html">View Courses →</a></div>
+
+<nav>
+  <div class="nav-wrap">
+    <a href="index.html" class="logo"><img src="logo-colour.png" alt="Baseerah Institute"/></a>
+    <div class="nav-links">
+      <a href="about.html" class="active">About</a>
+      <a href="courses.html">Courses</a>
+      <a href="about.html#teacher">Our Teacher</a>
+      <a href="index.html#events">Events</a>
+      <a href="shop.html">Shop</a>
+      <a href="blog.html">Blog</a>
+      <a href="donate.html">Donate</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="courses.html" class="btn btn-primary" style="margin-left:20px">Register Now</a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mob" id="mobMenu">
+  <nav class="mob-links">
+    <a href="about.html"         class="mob-link">About</a>
+    <a href="courses.html"       class="mob-link">Courses</a>
+    <a href="about.html#teacher" class="mob-link">Our Teacher</a>
+    <a href="index.html#events"  class="mob-link">Events</a>
+    <a href="shop.html"          class="mob-link">Shop</a>
+    <a href="blog.html"          class="mob-link">Blog</a>
+    <a href="donate.html"        class="mob-link">Donate</a>
+    <a href="contact.html"       class="mob-link">Contact</a>
+  </nav>
+  <div class="mob-foot">
+    <a href="tel:+27672144963">+27 067 214 4963</a>
+    <a href="mailto:baseerahinstitute.sa@gmail.com">baseerahinstitute.sa@gmail.com</a>
+  </div>
+</div>
+
+<!-- Page Hero -->
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Our Story</span>
+      <h1>Rooted in tradition.<br/><em>Open to all.</em></h1>
+      <p>Baseerah Institute was founded in 2016 out of a conviction that every woman deserves access to high-quality Islamic scholarship — in her own language, in her own city, led by women who have walked the path.</p>
+    </div>
+  </div>
+</section>
+
+<div class="wave" style="background:var(--charcoal)">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#FAF8F4"/>
+  </svg>
+</div>
+
+<!-- Mission -->
+
+<section class="mission">
+  <div class="wrap">
+    <div class="mission-grid">
+      <div class="reveal">
+        <span class="eyebrow">Who We Are</span>
+        <h2>Female-led scholarship,<br/><em>since 2016.</em></h2>
+        <p>Baseerah Institute is a female-led Islamic institution that seeks to raise the level of female education and scholarship through the teaching and publishing of traditional Islamic texts and sciences. We offer part-time courses, short courses, and workshops throughout the year.</p>
+        <p>Founded by Shaykhah Rukayya Samsodien in response to a real gap she witnessed in Cape Town — <strong>accessible, rigorous, women-led Islamic education</strong> — Baseerah has grown from a small weekly gathering into a trusted institution serving over 2500 students.</p>
+        <p>We take pride in our holistic approach: fostering an atmosphere of sisterhood alongside academic excellence. Our classes are interactive. Our community is warm. And the pursuit of knowledge here is understood as a collective act of worship.</p>
+        <div class="mission-ayah">
+          <p>وَمَا خَلَقْتُ الْجِنَّ وَالْإِنسَ إِلَّا لِيَعْبُدُونَ</p>
+          <small>And I did not create the jinn and mankind except to worship Me. — Surah Adh-Dhariyat: 56</small>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="mission-img">
+          <img src="https://images.unsplash.com/photo-1585036156171-384164a8c675?w=900&auto=format&fit=crop&q=80" alt="Baseerah students in class"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Values -->
+
+<div class="wave" style="background:var(--cream)">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,20 C480,60 960,0 1440,40 L1440,60 L0,60 Z" fill="#F2EDE4"/>
+  </svg>
+</div>
+
+<section class="values">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">What We Stand For</span>
+      <h2>The <em>values</em> we build on</h2>
+    </div>
+    <div class="values-grid">
+      <div class="val-card reveal">
+        <div class="val-icon">📚</div>
+        <h3>Traditional Scholarship</h3>
+        <p>We teach from authentic, well-known primer texts in the fundamental Islamic sciences — not reformulated or diluted. The classics, made accessible.</p>
+      </div>
+      <div class="val-card reveal">
+        <div class="val-icon">🤝</div>
+        <h3>Sisterhood First</h3>
+        <p>Every class is a halaqah as much as a lesson. We cultivate togetherness, mutual encouragement, and a safe space where women grow together.</p>
+      </div>
+      <div class="val-card reveal">
+        <div class="val-icon">🌱</div>
+        <h3>No Prerequisites</h3>
+        <p>No prior Islamic studies required for any course. We meet students exactly where they are — whether complete beginners or those deepening existing knowledge.</p>
+      </div>
+      <div class="val-card reveal">
+        <div class="val-icon">🎓</div>
+        <h3>Academic Excellence</h3>
+        <p>We hold ourselves to a high standard — structured curricula, qualified teachers, and a commitment to genuine understanding, not surface-level familiarity.</p>
+      </div>
+      <div class="val-card reveal">
+        <div class="val-icon">💬</div>
+        <h3>Interactive Learning</h3>
+        <p>Questions are welcomed — expected, even. Our classes thrive on contribution, discussion, and the kind of engaged curiosity that makes knowledge stick.</p>
+      </div>
+      <div class="val-card reveal">
+        <div class="val-icon">🌍</div>
+        <h3>Community Rooted</h3>
+        <p>We exist to support the Cape Town Muslim community — complementing existing madāris and filling genuine gaps in female Islamic education.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Shaykhah Rukayya -->
+
+<div class="wave" style="background:var(--cream-warm)">
+  <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,60 C480,0 960,80 1440,20 L1440,80 L0,80 Z" fill="#1A1A2E"/>
+  </svg>
+</div>
+
+<section class="shaykhah" id="teacher">
+  <div class="sh-water">بصيرة</div>
+  <div class="sh-blob"></div>
+  <div class="wrap">
+    <div class="sh-grid">
+      <div class="sh-img-wrap reveal">
+        <div class="sh-frame">
+          <img src="https://images.unsplash.com/photo-1548438294-1ad5d5f4f063?w=700&auto=format&fit=crop&q=80" alt="Shaykhah Rukayya Samsodien"/>
+        </div>
+        <div class="sh-cred"><p>Degree in Sharī'ah · Abū Nour Institute, Damascus · High Court Accredited Arabic–English Translator</p></div>
+      </div>
+      <div class="sh-text reveal">
+        <span class="eyebrow">Founder & Director</span>
+        <h2>Shaykhah Rukayya<br/>Samsodien</h2>
+        <p>Shaykhah Rukayya completed memorisation of the Qur'ān under the late Shaykh Mohammed Yusuf Booley. She then returned to school and completed matric at Islamia College, after which she commenced <strong>six years of study in Damascus, Syria.</strong></p>
+        <p>She received a diploma in Arabic Language and Islamic Studies from Abū Nour Institute, continued at Al-Fath University in the Faculty of Sharī'ah, and holds a degree in Sharī'ah. During her time in Syria, she recited the entire Qur'ān to Shaykh Abū al-Hasan Muhayyiddīn al-Kurdī in the narration of Hafs via the Ṭāriq of al-Shāṭibiyyah and received her <strong>sanad and ijāza</strong> therein.</p>
+        <p>She served seven years as Principal and Hifth Consultant at Jam'Eyyatul Qurrā' Female Hifth Institute, and lectured full-time at Dārun Na'īm, Wynberg for six years. She is also an accredited <strong>Arabic–English translator of the High Court of South Africa.</strong></p>
+        <div class="sh-pubs">
+          <h4>Authored Publications</h4>
+          <ul>
+            <li>Hifth Guide: Assisting Your Loved Ones Along Their Hifth Journey</li>
+            <li>Hifth Guide: An Educator's Manual</li>
+            <li>Al-Fiqh Al-Manhajī: The Book of Purification</li>
+            <li>Al-Fiqh Al-Manhajī: The Book of Prayer</li>
+            <li>Muhadathah Workbook 1 — Conversational Arabic: Take the Leap to Speak</li>
+            <li>Muhadathah Workbook 2 — Conversational Arabic: Take the Leap to Speak</li>
+          </ul>
+        </div>
+        <a href="shop.html" class="btn btn-primary">View Publications</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Teachers -->
+
+<div class="wave" style="background:var(--charcoal)">
+  <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,30 C360,80 1080,0 1440,50 L1440,80 L0,80 Z" fill="#FAF8F4"/>
+  </svg>
+</div>
+
+<section class="teachers">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Our Teachers</span>
+      <h2>The team behind <em>Baseerah</em></h2>
+      <p>Qualified women who have dedicated themselves to the pursuit and transmission of Islamic knowledge.</p>
+    </div>
+    <div class="teachers-grid">
+
+```
+  <!-- Shaykhah Rukayya card -->
+  <div class="tc reveal">
+    <div class="tc-img">
+      <img src="https://images.unsplash.com/photo-1548438294-1ad5d5f4f063?w=600&auto=format&fit=crop&q=80" alt="Shaykhah Rukayya Samsodien"/>
+    </div>
+    <div class="tc-body">
+      <h3>Shaykhah Rukayya Samsodien</h3>
+      <span class="role">Founder & Director</span>
+      <p>Degree in Sharī'ah (Al-Fath University, Damascus) · Ijāza in Hafs · High Court Accredited Translator · Author of 6 publications.</p>
+    </div>
+  </div>
+
+  <!-- Placeholder 2 -->
+  <div class="tc reveal">
+    <div class="tc-img placeholder">
+      <div class="ph-icon">👩‍🏫</div>
+      <p>Coming soon</p>
+    </div>
+    <div class="tc-body coming">
+      <h3>Teacher Profile</h3>
+      <span class="role">Instructor</span>
+      <p>Bio coming soon. Contact us to learn more about our teaching team.</p>
+    </div>
+  </div>
+
+  <!-- Placeholder 3 -->
+  <div class="tc reveal">
+    <div class="tc-img placeholder">
+      <div class="ph-icon">👩‍🏫</div>
+      <p>Coming soon</p>
+    </div>
+    <div class="tc-body coming">
+      <h3>Teacher Profile</h3>
+      <span class="role">Instructor</span>
+      <p>Bio coming soon. Contact us to learn more about our teaching team.</p>
+    </div>
+  </div>
+
+</div>
+```
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ftop">
+      <div class="fb">
+        <img src="logo-white.png" alt="Baseerah Institute"/>
+        <p>A female-led Islamic institution in Cape Town. Founded 2016 by Shaykhah Rukayya Samsodien.</p>
+        <div class="fsoc">
+          <a href="https://instagram.com/baseerahinstitute" class="fs" target="_blank" aria-label="Instagram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,.5)" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="fc">
+        <h5>Programmes</h5>
+        <ul>
+          <li><a href="courses.html">Arabic Mastery</a></li>
+          <li><a href="courses.html">Hifth Programme</a></li>
+          <li><a href="courses.html">Thursday Dawrah</a></li>
+          <li><a href="courses.html">Short Courses</a></li>
+        </ul>
+      </div>
+      <div class="fc">
+        <h5>Institute</h5>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© 2026 Baseerah Institute · NPC 2026/317298/08</span>
+      <span><a href="mailto:baseerahinstitute.sa@gmail.com">baseerahinstitute.sa@gmail.com</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const h=document.getElementById('hamburger'),m=document.getElementById('mobMenu');
+  const ml=document.querySelectorAll('.mob-link');
+  h.addEventListener('click',()=>{const o=m.classList.toggle('open');h.classList.toggle('open');document.body.style.overflow=o?'hidden':''});
+  ml.forEach(l=>l.addEventListener('click',()=>{m.classList.remove('open');h.classList.remove('open');document.body.style.overflow=''}));
+  const obs=new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}}),{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>

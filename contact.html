@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — Baseerah Institute</title>
+  <meta name="description" content="Get in touch with Baseerah Institute — register for a course, ask a question, or find out where we are in Cape Town."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --teal:#009EA8;--teal-mid:#007A82;--teal-light:#E0F5F7;--teal-faint:#EFF9FA;
+      --charcoal:#1A1A2E;--cream:#FAF8F4;--cream-warm:#F2EDE4;--cream-deep:#E8E0D3;
+      --gold:#B8872E;--gold-light:#F5EDD8;
+      --text:#3A3848;--text-mid:#6B6880;--text-light:#9896AA;
+      --r-sm:12px;--r-md:24px;--r-lg:40px;--r-xl:60px;
+      --shadow:0 8px 40px rgba(26,26,46,.09);--shadow-sm:0 4px 20px rgba(26,26,46,.06);
+      --trans:0.35s cubic-bezier(.4,0,.2,1);--max:1160px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.65;overflow-x:hidden}
+    img{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
+    ul{list-style:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
+    .eyebrow{font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal)}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:15px 32px;border-radius:100px;cursor:pointer;transition:var(--trans);white-space:nowrap;border:none}
+    .btn-primary{background:var(--teal);color:white}
+    .btn-primary:hover{background:var(--teal-mid);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,158,168,.3)}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    @keyframes blobf{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(18px,-14px) scale(1.03)}66%{transform:translate(-14px,18px) scale(.97)}}
+
+```
+/* Nav */
+.bar{background:var(--charcoal);color:rgba(255,255,255,.7);text-align:center;padding:11px 24px;font-size:12.5px}
+.bar a{color:var(--teal);font-weight:600}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,248,244,.94);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.05)}
+.nav-wrap{display:flex;align-items:center;justify-content:space-between;height:70px;padding:0 32px}
+.logo img{height:44px}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{font-size:13px;font-weight:500;color:var(--text-mid);transition:color var(--trans);position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--teal);transition:width var(--trans)}
+.nav-links a:hover,.nav-links a.active{color:var(--teal)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.hamburger{display:none;flex-direction:column;background:none;border:none;cursor:pointer;padding:8px;width:40px;height:40px;position:relative}
+.hamburger span{display:block;width:22px;height:2px;border-radius:2px;background:var(--charcoal);transition:transform .35s ease,opacity .25s ease;position:absolute;left:9px}
+.hamburger span:nth-child(1){top:13px}.hamburger span:nth-child(2){top:19px}.hamburger span:nth-child(3){top:25px}
+.hamburger.open span:nth-child(1){transform:rotate(45deg);top:19px}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg);top:19px}
+.mob{position:fixed;inset:0;z-index:190;background:rgba(8,10,22,.92);backdrop-filter:blur(32px);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s ease}
+.mob.open{opacity:1;pointer-events:all}
+.mob-links{display:flex;flex-direction:column;align-items:center;width:100%;max-width:400px}
+.mob-links a{font-family:'Cormorant Garamond',serif;font-size:38px;font-style:italic;color:rgba(255,255,255,.85);text-align:center;padding:16px 0;width:100%;border-bottom:1px solid rgba(255,255,255,.07);transition:color .25s}
+.mob-links a:first-child{border-top:1px solid rgba(255,255,255,.07)}
+.mob-links a:hover{color:var(--teal)}
+.mob-foot{position:absolute;bottom:40px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.mob-foot a{font-size:12px;color:rgba(255,255,255,.38)}
+.wave{display:block;width:100%;overflow:hidden;line-height:0}
+.wave svg{display:block;width:100%}
+
+/* Hero */
+.page-hero{background:var(--charcoal);padding:120px 0 80px;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;top:-80px;right:-80px;width:500px;height:500px;background:radial-gradient(ellipse,rgba(0,158,168,.15) 0%,transparent 68%);border-radius:55% 45% 40% 60%;pointer-events:none;animation:blobf 12s ease-in-out infinite}
+.page-hero .eyebrow{display:block;margin-bottom:16px}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,6vw,80px);font-weight:300;font-style:italic;color:white;line-height:1.05;margin-bottom:20px}
+.page-hero h1 em{font-style:normal;color:var(--teal)}
+.page-hero p{font-size:16px;color:rgba(255,255,255,.6);max-width:560px;line-height:1.78}
+
+/* Quick links */
+.quick-links{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.ql{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:100px;padding:10px 20px;font-size:13px;font-weight:500;color:rgba(255,255,255,.8);transition:var(--trans)}
+.ql:hover{background:rgba(0,158,168,.25);border-color:var(--teal);color:white}
+
+/* Main contact section */
+.contact-main{padding:80px 0 100px;position:relative;overflow:hidden}
+.contact-main::before{content:'';position:absolute;top:-60px;right:-100px;width:400px;height:400px;background:radial-gradient(ellipse,var(--teal-faint) 0%,transparent 68%);border-radius:55% 45% 40% 60%;animation:blobf 13s ease-in-out infinite;pointer-events:none}
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:start;position:relative;z-index:2}
+
+/* Contact info */
+.contact-info .eyebrow{display:block;margin-bottom:16px}
+.contact-info h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,48px);font-weight:300;color:var(--charcoal);line-height:1.12;margin-bottom:28px}
+.contact-info h2 em{font-style:italic;color:var(--teal)}
+.citem{display:flex;align-items:flex-start;gap:16px;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--cream-deep)}
+.citem:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.cicon{width:46px;height:46px;background:var(--teal-faint);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cicon svg{color:var(--teal)}
+.citem-body small{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-light);display:block;margin-bottom:4px}
+.citem-body a,.citem-body p{font-size:14.5px;color:var(--text);line-height:1.6}
+.citem-body a:hover{color:var(--teal)}
+.citem-body .sub-note{font-size:12px;color:var(--text-light);margin-top:2px}
+
+/* Map */
+.map-wrap{border-radius:var(--r-lg);overflow:hidden;height:240px;background:var(--cream-warm);position:relative;margin-top:24px;box-shadow:var(--shadow-sm)}
+.map-wrap iframe{width:100%;height:100%;border:none;filter:saturate(.8)}
+.map-overlay{position:absolute;bottom:16px;left:16px;background:white;border-radius:var(--r-md);padding:12px 16px;box-shadow:var(--shadow-sm)}
+.map-overlay p{font-size:12.5px;font-weight:600;color:var(--charcoal)}
+.map-overlay small{font-size:11px;color:var(--text-mid)}
+
+/* Form */
+.form-card{background:white;border-radius:var(--r-xl);padding:40px;box-shadow:var(--shadow)}
+.form-card h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--charcoal);margin-bottom:6px}
+.form-card .form-sub{font-size:13.5px;color:var(--text-mid);margin-bottom:28px}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.form-group label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-mid)}
+.form-group input,.form-group select,.form-group textarea{font-family:'DM Sans',sans-serif;font-size:14px;padding:13px 16px;border:1.5px solid var(--cream-deep);border-radius:12px;background:var(--cream);color:var(--text);transition:border-color var(--trans);outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--teal)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-note{font-size:12px;color:var(--text-light);text-align:center;margin-top:12px;line-height:1.6}
+
+/* Social strip */
+.social-strip{padding:60px 0;background:var(--cream-warm)}
+.social-strip-in{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap}
+.social-strip h3{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,36px);font-weight:300;color:var(--charcoal)}
+.social-strip h3 em{font-style:italic;color:var(--teal)}
+.social-links{display:flex;gap:14px}
+.social-link{display:flex;align-items:center;gap:10px;background:white;border-radius:100px;padding:12px 20px;box-shadow:var(--shadow-sm);font-size:13px;font-weight:600;color:var(--text);transition:var(--trans)}
+.social-link:hover{transform:translateY(-3px);box-shadow:var(--shadow);color:var(--teal)}
+.social-link svg{flex-shrink:0}
+
+/* Footer */
+footer{background:var(--charcoal);padding:60px 0 32px}
+.ftop{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:60px;margin-bottom:40px}
+.fb img{height:48px;margin-bottom:14px;opacity:.8}
+.fb p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.85;max-width:270px;margin-bottom:18px}
+.fsoc{display:flex;gap:10px}
+.fs{width:34px;height:34px;border-radius:10px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;transition:var(--trans)}
+.fs:hover{border-color:var(--teal);background:rgba(0,158,168,.15)}
+.fc h5{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:18px}
+.fc li{margin-bottom:10px}
+.fc a{font-size:13px;color:rgba(255,255,255,.36);transition:color var(--trans)}
+.fc a:hover{color:var(--teal)}
+.fbot{padding-top:24px;border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.fbot span{font-size:12px;color:rgba(255,255,255,.26)}
+.fbot a{color:var(--teal)}
+
+@media(max-width:960px){
+  .nav-links,.nav-links+.btn{display:none}
+  .hamburger{display:flex}
+  .contact-grid{grid-template-columns:1fr}
+  .social-strip-in{flex-direction:column;text-align:center}
+  .ftop{grid-template-columns:1fr;gap:32px}
+  .fbot{flex-direction:column;text-align:center}
+}
+@media(max-width:640px){
+  .wrap{padding:0 20px}
+  .form-row{grid-template-columns:1fr}
+}
+```
+
+  </style>
+</head>
+<body>
+
+<div class="bar">🌿 Questions about a course? We'd love to help · <a href="#form">Send us a message →</a></div>
+
+<nav>
+  <div class="nav-wrap">
+    <a href="index.html" class="logo"><img src="logo-colour.png" alt="Baseerah Institute"/></a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="courses.html">Courses</a>
+      <a href="about.html#teacher">Our Teacher</a>
+      <a href="index.html#events">Events</a>
+      <a href="shop.html">Shop</a>
+      <a href="blog.html">Blog</a>
+      <a href="donate.html">Donate</a>
+      <a href="contact.html" class="active">Contact</a>
+    </div>
+    <a href="courses.html" class="btn btn-primary" style="margin-left:20px">Register Now</a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mob" id="mobMenu">
+  <nav class="mob-links">
+    <a href="about.html"         class="mob-link">About</a>
+    <a href="courses.html"       class="mob-link">Courses</a>
+    <a href="about.html#teacher" class="mob-link">Our Teacher</a>
+    <a href="index.html#events"  class="mob-link">Events</a>
+    <a href="shop.html"          class="mob-link">Shop</a>
+    <a href="blog.html"          class="mob-link">Blog</a>
+    <a href="donate.html"        class="mob-link">Donate</a>
+    <a href="contact.html"       class="mob-link">Contact</a>
+  </nav>
+  <div class="mob-foot">
+    <a href="tel:+27672144963">+27 067 214 4963</a>
+    <a href="mailto:baseerahinstitute.sa@gmail.com">baseerahinstitute.sa@gmail.com</a>
+  </div>
+</div>
+
+<!-- Hero -->
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Get in Touch</span>
+      <h1>We'd love to<br/><em>hear from you.</em></h1>
+      <p>Whether you want to register for a course, ask about a programme, order a book, or simply find out where you'd fit best — reach out. We'll get back to you within 1–2 business days.</p>
+      <div class="quick-links">
+        <a href="courses.html#register" class="ql">📋 Register for a course</a>
+        <a href="shop.html" class="ql">📚 Order a book</a>
+        <a href="donate.html" class="ql">💛 Donate</a>
+        <a href="tel:+27672144963" class="ql">📞 Call us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wave" style="background:var(--charcoal)">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#FAF8F4"/>
+  </svg>
+</div>
+
+<!-- Main contact -->
+
+<section class="contact-main">
+  <div class="wrap">
+    <div class="contact-grid">
+
+```
+  <!-- Left: info + map -->
+  <div class="reveal">
+    <span class="eyebrow">Find Us</span>
+    <h2>Come and see<br/><em>us in Athlone.</em></h2>
+
+    <div class="citem">
+      <div class="cicon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </div>
+      <div class="citem-body">
+        <small>Phone / WhatsApp</small>
+        <a href="tel:+27672144963">+27 067 214 4963</a>
+        <p class="sub-note">WhatsApp preferred for quick responses</p>
+      </div>
+    </div>
+
+    <div class="citem">
+      <div class="cicon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <div class="citem-body">
+        <small>Email</small>
+        <a href="mailto:baseerahinstitute.sa@gmail.com">baseerahinstitute.sa@gmail.com</a>
+        <p class="sub-note">We respond within 1–2 business days</p>
+      </div>
+    </div>
+
+    <div class="citem">
+      <div class="cicon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div class="citem-body">
+        <small>Physical Address</small>
+        <p>Masjid al-Salaam (upstairs)<br/>34 St Athans Road, Athlone<br/>Cape Town, 7764</p>
+      </div>
+    </div>
+
+    <div class="citem">
+      <div class="cicon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div class="citem-body">
+        <small>Class Hours</small>
+        <p>Arabic Mastery: Mon–Wed · 8:20am–12:40pm<br/>
+        Hifth Programme: Mon–Thu · 8:20am–12:40pm<br/>
+        Thursday Dawrah: Thursdays · 9:00am–12:30pm</p>
+      </div>
+    </div>
+
+    <!-- Map -->
+    <div class="map-wrap">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.5!2d18.5274!3d-33.9652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDU3JzU1LjIiUyAxOMKwMzEnMzguOCJF!5e0!3m2!1sen!2sza!4v1"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Baseerah Institute location">
+      </iframe>
+      <div class="map-overlay">
+        <p>Masjid al-Salaam</p>
+        <small>34 St Athans Rd, Athlone</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: form -->
+  <div class="form-card reveal" id="form">
+    <h3>Send us a message</h3>
+    <p class="form-sub">Tell us what you're looking for and we'll point you in the right direction.</p>
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact"/>
+      <p style="display:none"><input name="bot-field"/></p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name *</label>
+          <input type="text" name="first_name" required placeholder="Aisha"/>
+        </div>
+        <div class="form-group">
+          <label>Last Name *</label>
+          <input type="text" name="last_name" required placeholder="Smith"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address *</label>
+        <input type="email" name="email" required placeholder="you@example.com"/>
+      </div>
+      <div class="form-group">
+        <label>WhatsApp / Phone</label>
+        <input type="tel" name="phone" placeholder="+27 ..."/>
+      </div>
+      <div class="form-group">
+        <label>I'm enquiring about...</label>
+        <select name="subject">
+          <option>Registering for a course</option>
+          <option>Arabic Mastery Programme</option>
+          <option>Hifth Programme</option>
+          <option>Thursday Dawrah</option>
+          <option>Take a Leap to Speak</option>
+          <option>Ordering a book / publication</option>
+          <option>Donation or sponsorship</option>
+          <option>General question</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Your Message *</label>
+        <textarea name="message" required placeholder="Tell us a bit about what you're looking for..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Send Message</button>
+      <p class="form-note">We'll get back to you within 1–2 business days. جزاكم الله خيرًا</p>
+    </form>
+  </div>
+
+</div>
+```
+
+  </div>
+</section>
+
+<!-- Social strip -->
+
+<div class="wave" style="background:var(--cream)">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,20 C480,60 960,0 1440,40 L1440,60 L0,60 Z" fill="#F2EDE4"/>
+  </svg>
+</div>
+
+<section class="social-strip">
+  <div class="wrap">
+    <div class="social-strip-in reveal">
+      <h3>Follow along on<br/><em>Instagram</em></h3>
+      <div class="social-links">
+        <a href="https://instagram.com/baseerahinstitute" target="_blank" class="social-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          @baseerahinstitute
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ftop">
+      <div class="fb">
+        <img src="logo-white.png" alt="Baseerah Institute"/>
+        <p>A female-led Islamic institution in Cape Town. Founded 2016 by Shaykhah Rukayya Samsodien.</p>
+        <div class="fsoc">
+          <a href="https://instagram.com/baseerahinstitute" class="fs" target="_blank">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,.5)" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="fc">
+        <h5>Programmes</h5>
+        <ul>
+          <li><a href="courses.html">Arabic Mastery</a></li>
+          <li><a href="courses.html">Hifth Programme</a></li>
+          <li><a href="courses.html">Thursday Dawrah</a></li>
+          <li><a href="courses.html">Short Courses</a></li>
+        </ul>
+      </div>
+      <div class="fc">
+        <h5>Institute</h5>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© 2026 Baseerah Institute · NPC 2026/317298/08</span>
+      <span><a href="mailto:baseerahinstitute.sa@gmail.com">baseerahinstitute.sa@gmail.com</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const h=document.getElementById('hamburger'),m=document.getElementById('mobMenu');
+  h.addEventListener('click',()=>{const o=m.classList.toggle('open');h.classList.toggle('open');document.body.style.overflow=o?'hidden':''});
+  document.querySelectorAll('.mob-link').forEach(l=>l.addEventListener('click',()=>{m.classList.remove('open');h.classList.remove('open');document.body.style.overflow=''}));
+  const obs=new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}}),{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>

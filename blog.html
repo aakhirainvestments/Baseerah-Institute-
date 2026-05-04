@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog & Resources — Baseerah Institute</title>
+  <meta name="description" content="Articles, reflections, and resources from Baseerah Institute — on Arabic, Hifth, Islamic sciences, and the pursuit of knowledge."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --teal:#009EA8;--teal-mid:#007A82;--teal-light:#E0F5F7;--teal-faint:#EFF9FA;
+      --charcoal:#1A1A2E;--cream:#FAF8F4;--cream-warm:#F2EDE4;--cream-deep:#E8E0D3;
+      --gold:#B8872E;--gold-light:#F5EDD8;
+      --text:#3A3848;--text-mid:#6B6880;--text-light:#9896AA;
+      --r-sm:12px;--r-md:24px;--r-lg:40px;--r-xl:60px;
+      --shadow:0 8px 40px rgba(26,26,46,.09);--shadow-sm:0 4px 20px rgba(26,26,46,.06);
+      --trans:0.35s cubic-bezier(.4,0,.2,1);--max:1160px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.65;overflow-x:hidden}
+    img{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
+    ul{list-style:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
+    .eyebrow{font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal)}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:15px 32px;border-radius:100px;cursor:pointer;transition:var(--trans);white-space:nowrap;border:none}
+    .btn-primary{background:var(--teal);color:white}
+    .btn-primary:hover{background:var(--teal-mid);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,158,168,.3)}
+    .btn-outline{background:transparent;color:var(--teal);border:1.5px solid var(--teal)}
+    .btn-outline:hover{background:var(--teal);color:white;transform:translateY(-2px)}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
+```
+/* Nav */
+.bar{background:var(--charcoal);color:rgba(255,255,255,.7);text-align:center;padding:11px 24px;font-size:12.5px}
+.bar a{color:var(--teal);font-weight:600}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,248,244,.94);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.05)}
+.nav-wrap{display:flex;align-items:center;justify-content:space-between;height:70px;padding:0 32px}
+.logo img{height:44px}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{font-size:13px;font-weight:500;color:var(--text-mid);transition:color var(--trans);position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--teal);transition:width var(--trans)}
+.nav-links a:hover,.nav-links a.active{color:var(--teal)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.hamburger{display:none;flex-direction:column;background:none;border:none;cursor:pointer;padding:8px;width:40px;height:40px;position:relative}
+.hamburger span{display:block;width:22px;height:2px;border-radius:2px;background:var(--charcoal);transition:transform .35s ease,opacity .25s ease;position:absolute;left:9px}
+.hamburger span:nth-child(1){top:13px}.hamburger span:nth-child(2){top:19px}.hamburger span:nth-child(3){top:25px}
+.hamburger.open span:nth-child(1){transform:rotate(45deg);top:19px}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg);top:19px}
+.mob{position:fixed;inset:0;z-index:190;background:rgba(8,10,22,.92);backdrop-filter:blur(32px);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s ease}
+.mob.open{opacity:1;pointer-events:all}
+.mob-links{display:flex;flex-direction:column;align-items:center;width:100%;max-width:400px}
+.mob-links a{font-family:'Cormorant Garamond',serif;font-size:38px;font-style:italic;color:rgba(255,255,255,.85);text-align:center;padding:16px 0;width:100%;border-bottom:1px solid rgba(255,255,255,.07);transition:color .25s}
+.mob-links a:first-child{border-top:1px solid rgba(255,255,255,.07)}
+.mob-links a:hover{color:var(--teal)}
+.mob-foot{position:absolute;bottom:40px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.mob-foot a{font-size:12px;color:rgba(255,255,255,.38)}
+.wave{display:block;width:100%;overflow:hidden;line-height:0}
+.wave svg{display:block;width:100%}
+
+/* Page hero */
+.page-hero{background:var(--charcoal);padding:120px 0 80px;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;top:-80px;right:-80px;width:500px;height:500px;background:radial-gradient(ellipse,rgba(0,158,168,.15) 0%,transparent 68%);border-radius:55% 45% 40% 60%;pointer-events:none}
+.page-hero .eyebrow{display:block;margin-bottom:16px}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,6vw,80px);font-weight:300;font-style:italic;color:white;line-height:1.05;margin-bottom:20px}
+.page-hero h1 em{font-style:normal;color:var(--teal)}
+.page-hero p{font-size:16px;color:rgba(255,255,255,.6);max-width:560px;line-height:1.78}
+
+/* Featured post */
+.featured-post{display:grid;grid-template-columns:1.2fr 1fr;gap:0;background:white;border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--shadow);margin-bottom:48px;transition:transform var(--trans),box-shadow var(--trans)}
+.featured-post:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(26,26,46,.13)}
+.featured-img{overflow:hidden;min-height:360px;position:relative}
+.featured-img img{width:100%;height:100%;object-fit:cover;transition:transform .9s ease}
+.featured-post:hover .featured-img img{transform:scale(1.04)}
+.featured-badge{position:absolute;top:20px;left:20px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 14px;border-radius:100px;color:white;background:var(--teal)}
+.featured-body{padding:48px;display:flex;flex-direction:column;justify-content:center}
+.featured-body .eyebrow{display:block;margin-bottom:14px}
+.featured-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);font-weight:600;color:var(--charcoal);line-height:1.2;margin-bottom:14px}
+.featured-body p{font-size:14.5px;color:var(--text-mid);line-height:1.8;margin-bottom:24px;flex:1}
+.post-meta{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--text-light);margin-bottom:16px}
+.post-meta span{display:flex;align-items:center;gap:4px}
+
+/* Category filter */
+.filter-tabs{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
+.ftab{font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 22px;border-radius:100px;border:1.5px solid var(--cream-deep);background:white;color:var(--text-mid);cursor:pointer;transition:var(--trans)}
+.ftab:hover,.ftab.active{background:var(--teal);color:white;border-color:var(--teal)}
+
+/* Blog grid */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.post-card{background:white;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-sm);transition:transform var(--trans),box-shadow var(--trans);display:flex;flex-direction:column}
+.post-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.post-img{height:200px;overflow:hidden;position:relative;background:var(--teal-faint)}
+.post-img img{width:100%;height:100%;object-fit:cover;filter:saturate(.75);transition:filter var(--trans),transform var(--trans)}
+.post-card:hover .post-img img{filter:saturate(1);transform:scale(1.04)}
+.post-img.coming{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px}
+.post-img.coming span{font-size:40px}
+.post-img.coming p{font-size:11px;color:var(--teal-mid);font-weight:500}
+.post-cat{position:absolute;top:14px;left:14px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 12px;border-radius:100px;color:white;background:var(--charcoal)}
+.post-cat.arabic{background:var(--teal)}
+.post-cat.hifth{background:#6B4E8A}
+.post-cat.fiqh{background:var(--gold)}
+.post-body{padding:24px;flex:1;display:flex;flex-direction:column}
+.post-body .post-meta{margin-bottom:10px}
+.post-body h3{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;color:var(--charcoal);margin-bottom:10px;line-height:1.3;flex:1}
+.post-body p{font-size:13.5px;color:var(--text-mid);line-height:1.72;margin-bottom:18px}
+.post-body a.read-more{font-size:12.5px;font-weight:600;color:var(--teal);letter-spacing:.06em;display:flex;align-items:center;gap:6px;transition:gap var(--trans)}
+.post-body a.read-more:hover{gap:10px}
+
+/* Coming soon state */
+.coming-soon-banner{background:var(--teal-faint);border:1.5px solid var(--teal-light);border-radius:var(--r-md);padding:24px 28px;text-align:center;margin-bottom:40px}
+.coming-soon-banner p{font-size:14px;color:var(--teal-mid);line-height:1.7}
+.coming-soon-banner strong{color:var(--teal)}
+
+/* Newsletter */
+.newsletter{padding:80px 0 100px;background:var(--charcoal);position:relative;overflow:hidden}
+.newsletter::before{content:'';position:absolute;top:-80px;right:-80px;width:450px;height:450px;background:radial-gradient(ellipse,rgba(0,158,168,.12) 0%,transparent 68%);border-radius:55% 45% 40% 60%;pointer-events:none}
+.newsletter-in{max-width:600px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.newsletter .eyebrow{display:block;margin-bottom:16px}
+.newsletter h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,48px);font-weight:300;color:white;margin-bottom:16px}
+.newsletter p{font-size:15px;color:rgba(255,255,255,.6);line-height:1.78;margin-bottom:32px}
+.nl-form{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.nl-form input{font-family:'DM Sans',sans-serif;font-size:14px;padding:15px 20px;border:1.5px solid rgba(255,255,255,.15);border-radius:100px;background:rgba(255,255,255,.08);color:white;outline:none;transition:border-color var(--trans);flex:1;min-width:240px}
+.nl-form input::placeholder{color:rgba(255,255,255,.35)}
+.nl-form input:focus{border-color:var(--teal)}
+
+/* Footer */
+footer{background:var(--charcoal);padding:60px 0 32px;border-top:1px solid rgba(255,255,255,.05)}
+.ftop{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:60px;margin-bottom:40px}
+.fb img{height:48px;margin-bottom:14px;opacity:.8}
+.fb p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.85;max-width:270px;margin-bottom:18px}
+.fsoc{display:flex;gap:10px}
+.fs{width:34px;height:34px;border-radius:10px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;transition:var(--trans)}
+.fs:hover{border-color:var(--teal);background:rgba(0,158,168,.15)}
+.fc h5{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:18px}
+.fc li{margin-bottom:10px}
+.fc a{font-size:13px;color:rgba(255,255,255,.36);transition:color var(--trans)}
+.fc a:hover{color:var(--teal)}
+.fbot{padding-top:24px;border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.fbot span{font-size:12px;color:rgba(255,255,255,.26)}
+.fbot a{color:var(--teal)}
+
+@media(max-width:960px){
+  .nav-links,.nav-links+.btn{display:none}
+  .hamburger{display:flex}
+  .featured-post{grid-template-columns:1fr}
+  .featured-img{min-height:240px}
+  .blog-grid{grid-template-columns:repeat(2,1fr)}
+  .ftop{grid-template-columns:1fr;gap:32px}
+  .fbot{flex-direction:column;text-align:center}
+}
+@media(max-width:640px){
+  .wrap{padding:0 20px}
+  .blog-grid{grid-template-columns:1fr}
+}
+```
+
+  </style>
+</head>
+<body>
+
+<div class="bar">🌿 New to Baseerah? <a href="courses.html">Explore our courses →</a></div>
+
+<nav>
+  <div class="nav-wrap">
+    <a href="index.html" class="logo"><img src="logo-colour.png" alt="Baseerah Institute"/></a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="courses.html">Courses</a>
+      <a href="about.html#teacher">Our Teacher</a>
+      <a href="index.html#events">Events</a>
+      <a href="shop.html">Shop</a>
+      <a href="blog.html" class="active">Blog</a>
+      <a href="donate.html">Donate</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="courses.html" class="btn btn-primary" style="margin-left:20px">Register Now</a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mob" id="mobMenu">
+  <nav class="mob-links">
+    <a href="about.html" class="mob-link">About</a>
+    <a href="courses.html" class="mob-link">Courses</a>
+    <a href="about.html#teacher" class="mob-link">Our Teacher</a>
+    <a href="index.html#events" class="mob-link">Events</a>
+    <a href="shop.html" class="mob-link">Shop</a>
+    <a href="blog.html" class="mob-link">Blog</a>
+    <a href="donate.html" class="mob-link">Donate</a>
+    <a href="contact.html" class="mob-link">Contact</a>
+  </nav>
+  <div class="mob-foot">
+    <a href="tel:+27672144963">+27 067 214 4963</a>
+    <a href="mailto:baseerahinstitute.sa@gmail.com">baseerahinstitute.sa@gmail.com</a>
+  </div>
+</div>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Blog & Resources</span>
+      <h1>Words of<br/><em>benefit.</em></h1>
+      <p>Reflections on Islamic sciences, guidance on the Hifth journey, Arabic learning tips, and writings from Shaykhah Rukayya — for women seeking knowledge.</p>
+    </div>
+  </div>
+</section>
+
+<div class="wave" style="background:var(--charcoal)">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#FAF8F4"/>
+  </svg>
+</div>
+
+<section style="padding:80px 0 100px;background:var(--cream)">
+  <div class="wrap">
+
+```
+<div class="coming-soon-banner reveal">
+  <p><strong>Articles and reflections are being compiled and will appear here soon.</strong> Once content is ready, it will be loaded in and managed through the Baseerah admin panel. In the meantime, follow <a href="https://instagram.com/baseerahinstitute" style="color:var(--teal);font-weight:600">@baseerahinstitute</a> for regular updates.</p>
+</div>
+
+<!-- Featured placeholder -->
+<div class="featured-post reveal">
+  <div class="featured-img">
+    <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=900&auto=format&fit=crop&q=80" alt="Writing"/>
+    <span class="featured-badge">Featured</span>
+  </div>
+  <div class="featured-body">
+    <span class="eyebrow">Hifth Journey</span>
+    <div class="post-meta">
+      <span>✍️ Shaykhah Rukayya Samsodien</span>
+      <span>· Coming soon</span>
+    </div>
+    <h2>What No One Tells You About the Hifth Journey</h2>
+    <p>An honest, encouraging look at what to expect when you or your child embarks on memorising the Qur'ān — the challenges, the blessings, and the wisdom needed to see it through.</p>
+    <a href="#" class="btn btn-primary" style="align-self:flex-start;opacity:.5;pointer-events:none">Coming Soon</a>
+  </div>
+</div>
+
+<!-- Filter -->
+<div class="filter-tabs reveal">
+  <button class="ftab active" data-filter="all">All Posts</button>
+  <button class="ftab" data-filter="arabic">Arabic</button>
+  <button class="ftab" data-filter="hifth">Hifth</button>
+  <button class="ftab" data-filter="fiqh">Fiqh & Tazkiya</button>
+  <button class="ftab" data-filter="institute">Institute News</button>
+</div>
+
+<!-- Blog grid - placeholders -->
+<div class="blog-grid">
+
+  <div class="post-card reveal" data-cat="arabic">
+    <div class="post-img coming">
+      <span>🔤</span>
+      <p>Coming soon</p>
+      <span class="post-cat arabic">Arabic</span>
+    </div>
+    <div class="post-body">
+      <div class="post-meta"><span>✍️ Shaykhah Rukayya</span></div>
+      <h3>Why Sarf Is the Most Underrated Science in Arabic</h3>
+      <p>Understanding word construction unlocks meaning in the Qur'ān that grammar alone can never give you.</p>
+      <a href="#" class="read-more" style="opacity:.4;pointer-events:none">Coming soon →</a>
+    </div>
+  </div>
+
+  <div class="post-card reveal" data-cat="hifth">
+    <div class="post-img coming">
+      <span>🌙</span>
+      <p>Coming soon</p>
+      <span class="post-cat hifth">Hifth</span>
+    </div>
+    <div class="post-body">
+      <div class="post-meta"><span>✍️ Baseerah Institute</span></div>
+      <h3>Supporting Your Child Through a Hifth Slump</h3>
+      <p>Every student hits a wall. Here is how parents can help — without adding pressure.</p>
+      <a href="#" class="read-more" style="opacity:.4;pointer-events:none">Coming soon →</a>
+    </div>
+  </div>
+
+  <div class="post-card reveal" data-cat="arabic">
+    <div class="post-img coming">
+      <span>💬</span>
+      <p>Coming soon</p>
+      <span class="post-cat arabic">Arabic</span>
+    </div>
+    <div class="post-body">
+      <div class="post-meta"><span>✍️ Shaykhah Rukayya</span></div>
+      <h3>5 Arabic Phrases Every Muslim Woman Should Know</h3>
+      <p>Simple, practical vocabulary for daily life — from greeting Arab sisters to navigating the Haram.</p>
+      <a href="#" class="read-more" style="opacity:.4;pointer-events:none">Coming soon →</a>
+    </div>
+  </div>
+
+  <div class="post-card reveal" data-cat="fiqh">
+    <div class="post-img coming">
+      <span>📿</span>
+      <p>Coming soon</p>
+      <span class="post-cat fiqh">Tazkiya</span>
+    </div>
+    <div class="post-body">
+      <div class="post-meta"><span>✍️ Baseerah Institute</span></div>
+      <h3>Purification of the Heart — Why Knowledge Without It Falls Short</h3>
+      <p>A reflection on integrating tazkiyah into the pursuit of Islamic scholarship.</p>
+      <a href="#" class="read-more" style="opacity:.4;pointer-events:none">Coming soon →</a>
+    </div>
+  </div>
+
+  <div class="post-card reveal" data-cat="institute">
+    <div class="post-img coming">
+      <span>🏫</span>
+      <p>Coming soon</p>
+      <span class="post-cat" style="background:var(--charcoal)">Institute News</span>
+    </div>
+    <div class="post-body">
+      <div class="post-meta"><span>✍️ Baseerah Institute</span></div>
+      <h3>What's New at Baseerah in 2026</h3>
+      <p>New courses, expanded programmes, and the launch of the updated Baseerah website.</p>
+      <a href="#" class="read-more" style="opacity:.4;pointer-events:none">Coming soon →</a>
+    </div>
+  </div>
+
+  <div class="post-card reveal" data-cat="hifth">
+    <div class="post-img coming">
+      <span>📖</span>
+      <p>Coming soon</p>
+      <span class="post-cat hifth">Hifth</span>
+    </div>
+    <div class="post-body">
+      <div class="post-meta"><span>✍️ Shaykhah Rukayya</span></div>
+      <h3>What to Look for in a Hifth Programme for Adults</h3>
+      <p>Adult learners have different needs. Here is what a good programme should actually provide.</p>
+      <a href="#" class="read-more" style="opacity:.4;pointer-events:none">Coming soon →</a>
+    </div>
+  </div>
+
+</div>
+```
+
+  </div>
+</section>
+
+<!-- Newsletter / Stay connected -->
+
+<section class="newsletter">
+  <div class="wrap">
+    <div class="newsletter-in reveal">
+      <span class="eyebrow">Stay Connected</span>
+      <h2>Get updates from Baseerah</h2>
+      <p>New articles, event announcements, and early registration — delivered to your inbox. No spam, ever.</p>
+      <form class="nl-form" name="newsletter" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="newsletter"/>
+        <input type="email" name="email" placeholder="Your email address" required/>
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ftop">
+      <div class="fb">
+        <img src="logo-white.png" alt="Baseerah Institute"/>
+        <p>A female-led Islamic institution in Cape Town. Founded 2016.</p>
+        <div class="fsoc">
+          <a href="https://instagram.com/baseerahinstitute" class="fs" target="_blank">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,.5)" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="fc">
+        <h5>Topics</h5>
+        <ul>
+          <li><a href="blog.html">Arabic Learning</a></li>
+          <li><a href="blog.html">Hifth Journey</a></li>
+          <li><a href="blog.html">Fiqh & Tazkiya</a></li>
+          <li><a href="blog.html">Institute News</a></li>
+        </ul>
+      </div>
+      <div class="fc">
+        <h5>Institute</h5>
+        <ul>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© 2026 Baseerah Institute · NPC 2026/317298/08</span>
+      <span><a href="mailto:baseerahinstitute.sa@gmail.com">baseerahinstitute.sa@gmail.com</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const h=document.getElementById('hamburger'),m=document.getElementById('mobMenu');
+  h.addEventListener('click',()=>{const o=m.classList.toggle('open');h.classList.toggle('open');document.body.style.overflow=o?'hidden':''});
+  document.querySelectorAll('.mob-link').forEach(l=>l.addEventListener('click',()=>{m.classList.remove('open');h.classList.remove('open');document.body.style.overflow=''}));
+  document.querySelectorAll('.ftab').forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('active'));
+      tab.classList.add('active');
+      const f=tab.dataset.filter;
+      document.querySelectorAll('.post-card').forEach(p=>{
+        p.style.display=(f==='all'||p.dataset.cat.includes(f))?'':'none';
+      });
+    });
+  });
+  const obs=new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}}),{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>

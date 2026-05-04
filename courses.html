@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Courses — Baseerah Institute</title>
+  <meta name="description" content="Explore all courses at Baseerah Institute — Arabic Mastery, Hifth, Conversational Arabic, Aqīdah, and more."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --teal:#009EA8;--teal-mid:#007A82;--teal-light:#E0F5F7;--teal-faint:#EFF9FA;
+      --charcoal:#1A1A2E;--cream:#FAF8F4;--cream-warm:#F2EDE4;--cream-deep:#E8E0D3;
+      --gold:#B8872E;--gold-light:#F5EDD8;
+      --text:#3A3848;--text-mid:#6B6880;--text-light:#9896AA;
+      --r-sm:12px;--r-md:24px;--r-lg:40px;--r-xl:60px;
+      --shadow:0 8px 40px rgba(26,26,46,.09);--shadow-sm:0 4px 20px rgba(26,26,46,.06);
+      --trans:0.35s cubic-bezier(.4,0,.2,1);--max:1160px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.65;overflow-x:hidden}
+    img{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
+    ul{list-style:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
+    .eyebrow{font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal)}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:15px 32px;border-radius:100px;cursor:pointer;transition:var(--trans);white-space:nowrap;border:none}
+    .btn-primary{background:var(--teal);color:white}
+    .btn-primary:hover{background:var(--teal-mid);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,158,168,.3)}
+    .btn-outline{background:transparent;color:var(--teal);border:1.5px solid var(--teal)}
+    .btn-outline:hover{background:var(--teal);color:white;transform:translateY(-2px)}
+    .btn-ghost{background:rgba(255,255,255,.12);color:white;border:1.5px solid rgba(255,255,255,.3);backdrop-filter:blur(8px)}
+    .btn-ghost:hover{background:rgba(255,255,255,.22);transform:translateY(-2px)}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
+```
+/* Nav */
+.bar{background:var(--charcoal);color:rgba(255,255,255,.7);text-align:center;padding:11px 24px;font-size:12.5px}
+.bar a{color:var(--teal);font-weight:600}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,248,244,.94);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.05)}
+.nav-wrap{display:flex;align-items:center;justify-content:space-between;height:70px;padding:0 32px}
+.logo{display:flex;align-items:center}
+.logo img{height:44px;width:auto}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{font-size:13px;font-weight:500;color:var(--text-mid);transition:color var(--trans);position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--teal);transition:width var(--trans)}
+.nav-links a:hover{color:var(--teal)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-links a.active{color:var(--teal)}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:6px;background:none;border:none;cursor:pointer;padding:8px;width:40px;height:40px;position:relative}
+.hamburger span{display:block;width:22px;height:2px;border-radius:2px;background:var(--charcoal);transition:transform .35s ease,opacity .25s ease;position:absolute;left:9px}
+.hamburger span:nth-child(1){top:13px}
+.hamburger span:nth-child(2){top:19px}
+.hamburger span:nth-child(3){top:25px}
+.hamburger.open span:nth-child(1){transform:rotate(45deg);top:19px}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg);top:19px}
+.mob{position:fixed;inset:0;z-index:190;background:rgba(8,10,22,.92);backdrop-filter:blur(32px);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s ease}
+.mob.open{opacity:1;pointer-events:all}
+.mob-links{display:flex;flex-direction:column;align-items:center;width:100%;max-width:400px}
+.mob-links a{font-family:'Cormorant Garamond',serif;font-size:38px;font-style:italic;color:rgba(255,255,255,.85);text-align:center;padding:16px 0;width:100%;border-bottom:1px solid rgba(255,255,255,.07);transition:color .25s}
+.mob-links a:first-child{border-top:1px solid rgba(255,255,255,.07)}
+.mob-links a:hover{color:var(--teal)}
+.mob-foot{position:absolute;bottom:40px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.mob-foot a{font-size:12px;color:rgba(255,255,255,.38)}
+
+/* Page hero */
+.page-hero{
+  background:var(--charcoal);
+  padding:120px 0 80px;
+  position:relative;overflow:hidden;
+}
+.page-hero::before{content:'';position:absolute;top:-80px;right:-80px;width:500px;height:500px;background:radial-gradient(ellipse,rgba(0,158,168,.15) 0%,transparent 68%);border-radius:55% 45% 40% 60%/50% 60% 40% 50%;pointer-events:none}
+.page-hero-text .eyebrow{display:block;margin-bottom:16px}
+.page-hero-text h1{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,6vw,80px);font-weight:300;font-style:italic;color:white;line-height:1.05;margin-bottom:20px}
+.page-hero-text h1 em{font-style:normal;color:var(--teal)}
+.page-hero-text p{font-size:16px;color:rgba(255,255,255,.6);max-width:560px;line-height:1.78}
+
+/* Wave */
+.wave{display:block;width:100%;overflow:hidden;line-height:0}
+.wave svg{display:block;width:100%}
+
+/* Filter tabs */
+.filter-tabs{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px;justify-content:center}
+.ftab{font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 22px;border-radius:100px;border:1.5px solid var(--cream-deep);background:white;color:var(--text-mid);cursor:pointer;transition:var(--trans)}
+.ftab:hover,.ftab.active{background:var(--teal);color:white;border-color:var(--teal)}
+
+/* Accordion course cards */
+.courses-list{display:flex;flex-direction:column;gap:20px}
+.ac{background:white;border-radius:var(--r-lg);box-shadow:var(--shadow-sm);overflow:hidden;border:1.5px solid transparent;transition:border-color var(--trans)}
+.ac:hover{border-color:var(--teal-light)}
+.ac-head{display:flex;align-items:center;gap:20px;padding:28px 32px;cursor:pointer;user-select:none}
+.ac-icon{width:56px;height:56px;border-radius:var(--r-sm);background:var(--teal-light);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.ac-title{flex:1}
+.ac-title .eyebrow{display:block;margin-bottom:4px}
+.ac-title h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--charcoal);line-height:1.2}
+.ac-meta-row{display:flex;gap:16px;margin-top:6px;flex-wrap:wrap}
+.ac-pill{font-size:11.5px;font-weight:600;color:var(--teal);background:var(--teal-faint);padding:3px 12px;border-radius:100px}
+.ac-pill.gold{color:var(--gold);background:var(--gold-light)}
+.ac-toggle{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--cream-deep);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:var(--trans);color:var(--text-mid)}
+.ac.open .ac-toggle{background:var(--teal);border-color:var(--teal);color:white;transform:rotate(45deg)}
+.ac-body{display:none;padding:0 32px 32px}
+.ac.open .ac-body{display:block}
+.ac-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:start}
+.ac-detail h4{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--charcoal);margin-bottom:12px;margin-top:20px}
+.ac-detail h4:first-child{margin-top:0}
+.ac-detail p{font-size:14.5px;color:var(--text-mid);line-height:1.8;margin-bottom:8px}
+.ac-detail ul{display:flex;flex-direction:column;gap:6px}
+.ac-detail li{font-size:14px;color:var(--text-mid);padding-left:16px;position:relative}
+.ac-detail li::before{content:'—';position:absolute;left:0;color:var(--teal)}
+.ac-aside{background:var(--cream-warm);border-radius:var(--r-md);padding:24px}
+.ac-aside-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
+.ac-aside-row:last-child{margin-bottom:0}
+.ac-aside-icon{width:32px;height:32px;background:white;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:var(--shadow-sm)}
+.ac-aside-icon svg{color:var(--teal)}
+.ac-aside-text small{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-light);display:block;margin-bottom:2px}
+.ac-aside-text span{font-size:13.5px;color:var(--charcoal)}
+.ac-cta{margin-top:24px;padding-top:20px;border-top:1px solid var(--cream-deep);display:flex;gap:12px;flex-wrap:wrap}
+.ac-divider{height:1px;background:var(--cream-deep);margin:0 32px 0}
+
+/* Reg form section */
+.reg-section{padding:80px 0 100px;background:var(--cream-warm)}
+.reg-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.reg-text .eyebrow{display:block;margin-bottom:14px}
+.reg-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,48px);font-weight:300;color:var(--charcoal);margin-bottom:16px}
+.reg-text p{font-size:15px;color:var(--text-mid);line-height:1.8}
+.form-card{background:white;border-radius:var(--r-lg);padding:36px;box-shadow:var(--shadow)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
+.form-group label{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-mid)}
+.form-group input,.form-group select,.form-group textarea{
+  font-family:'DM Sans',sans-serif;font-size:14px;
+  padding:13px 16px;border:1.5px solid var(--cream-deep);border-radius:12px;
+  background:var(--cream);color:var(--text);transition:border-color var(--trans);
+  outline:none;
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--teal)}
+.form-group textarea{resize:vertical;min-height:80px}
+.form-submit{width:100%;justify-content:center;margin-top:8px}
+.form-note{font-size:11.5px;color:var(--text-light);text-align:center;margin-top:12px;line-height:1.6}
+
+/* Footer */
+footer{background:var(--charcoal);padding:60px 0 32px}
+.ftop{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:60px;margin-bottom:40px}
+.fb img{height:48px;margin-bottom:14px;opacity:.8}
+.fb p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.85;max-width:270px;margin-bottom:18px}
+.fsoc{display:flex;gap:10px}
+.fs{width:34px;height:34px;border-radius:10px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;transition:var(--trans)}
+.fs:hover{border-color:var(--teal);background:rgba(0,158,168,.15)}
+.fc h5{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:18px}
+.fc li{margin-bottom:10px}
+.fc a{font-size:13px;color:rgba(255,255,255,.36);transition:color var(--trans)}
+.fc a:hover{color:var(--teal)}
+.fbot{padding-top:24px;border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.fbot span{font-size:12px;color:rgba(255,255,255,.26)}
+.fbot a{color:var(--teal)}
+
+@media(max-width:960px){
+  .nav-links,.nav-links+.btn{display:none}
+  .hamburger{display:flex}
+  .ac-grid{grid-template-columns:1fr}
+  .reg-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .ftop{grid-template-columns:1fr;gap:32px}
+  .fbot{flex-direction:column;text-align:center}
+}
+@media(max-width:640px){
+  .wrap{padding:0 20px}
+  .ac-head{padding:20px 20px}
+  .ac-body{padding:0 20px 24px}
+  .ac-divider{margin:0 20px}
+}
+```
+
+  </style>
+</head>
+<body>
+
+<div class="bar">🌿 Conversational Arabic — 6-Week Course, Sundays · <a href="#register">Register Now →</a></div>
+
+<nav>
+  <div class="nav-wrap">
+    <a href="index.html" class="logo"><img src="logo-colour.png" alt="Baseerah Institute"/></a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="courses.html" class="active">Courses</a>
+      <a href="about.html#teacher">Our Teacher</a>
+      <a href="index.html#events">Events</a>
+      <a href="shop.html">Shop</a>
+      <a href="blog.html">Blog</a>
+      <a href="donate.html">Donate</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="#register" class="btn btn-primary" style="margin-left:20px">Register Now</a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mob" id="mobMenu">
+  <nav class="mob-links">
+    <a href="about.html"         class="mob-link">About</a>
+    <a href="courses.html"       class="mob-link">Courses</a>
+    <a href="about.html#teacher" class="mob-link">Our Teacher</a>
+    <a href="index.html#events"  class="mob-link">Events</a>
+    <a href="shop.html"          class="mob-link">Shop</a>
+    <a href="blog.html"          class="mob-link">Blog</a>
+    <a href="donate.html"        class="mob-link">Donate</a>
+    <a href="contact.html"       class="mob-link">Contact</a>
+  </nav>
+  <div class="mob-foot">
+    <a href="tel:+27672144963">+27 067 214 4963</a>
+    <a href="mailto:baseerahinstitute.sa@gmail.com">baseerahinstitute.sa@gmail.com</a>
+  </div>
+</div>
+
+<!-- Page Hero -->
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="page-hero-text reveal">
+      <span class="eyebrow">Our Programmes</span>
+      <h1>Find your <em>path</em><br/>to knowledge.</h1>
+      <p>From two-year immersions to single-day workshops — every course at Baseerah begins where you are. No prerequisites. All welcome.</p>
+    </div>
+  </div>
+</section>
+
+<div class="wave" style="background:var(--charcoal)">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#FAF8F4"/>
+  </svg>
+</div>
+
+<!-- Courses List -->
+
+<section style="padding:80px 0 120px;background:var(--cream)">
+  <div class="wrap">
+
+```
+<div class="filter-tabs reveal">
+  <button class="ftab active" data-filter="all">All Programmes</button>
+  <button class="ftab" data-filter="arabic">Arabic</button>
+  <button class="ftab" data-filter="hifth">Hifth</button>
+  <button class="ftab" data-filter="short">Short Courses</button>
+  <button class="ftab" data-filter="free">Free Events</button>
+</div>
+
+<div class="courses-list reveal">
+
+  <!-- Arabic Mastery -->
+  <div class="ac" data-cat="arabic">
+    <div class="ac-head" onclick="toggleAc(this)">
+      <div class="ac-icon">📖</div>
+      <div class="ac-title">
+        <span class="eyebrow">2-Year Course · Arabic</span>
+        <h3>Arabic Mastery Programme</h3>
+        <div class="ac-meta-row">
+          <span class="ac-pill">Flagship</span>
+          <span class="ac-pill">R800/month</span>
+          <span class="ac-pill">In-person + Online</span>
+        </div>
+      </div>
+      <div class="ac-toggle">+</div>
+    </div>
+    <div class="ac-divider"></div>
+    <div class="ac-body">
+      <div class="ac-grid">
+        <div class="ac-detail">
+          <h4>About this programme</h4>
+          <p>The first of its kind in Cape Town — a comprehensive two-year Arabic journey designed to give you a firm grasp of the Arabic language and its workings. We graduate students who can read, understand, and engage with the Qur'ān and classical texts with real confidence.</p>
+          <h4>Subjects covered</h4>
+          <ul>
+            <li><strong>Nahw & I'rab</strong> — Grammar, context of words, the art of translation</li>
+            <li><strong>Sarf</strong> — Morphology, creating words, mastering verbs and their meanings</li>
+            <li><strong>Arabic Literature</strong> — Qur'ān, Hadith, classical & modern texts, traditional poetry</li>
+            <li><strong>Conversational Arabic</strong> — Based on the Leap to Speak series</li>
+          </ul>
+          <h4>Prerequisites</h4>
+          <p>The ability to read basic Arabic text, or a strong desire to learn and improve these skills.</p>
+        </div>
+        <div>
+          <div class="ac-aside">
+            <div class="ac-aside-row">
+              <div class="ac-aside-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+              <div class="ac-aside-text"><small>Schedule</small><span>Mon–Wed · 8:20am–12:40pm</span></div>
+            </div>
+            <div class="ac-aside-row">
+              <div class="ac-aside-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <div class="ac-aside-text"><small>Location</small><span>Masjid al-Salaam, Athlone + Zoom</span></div>
+            </div>
+            <div class="ac-aside-row">
+              <div class="ac-aside-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+              <div class="ac-aside-text"><small>Fees</small><span>R300 registration · R800/month (Feb–Dec)<br/>USD 30 reg · USD 80/month (international)</span></div>
+            </div>
+            <div class="ac-aside-row">
+              <div class="ac-aside-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+              <div class="ac-aside-text"><small>2026 Dates</small><span>26 Jan – 27 Nov 2026</span></div>
+            </div>
+            <div class="ac-aside-row">
+              <div class="ac-aside-icon">👩</div>
+              <div class="ac-aside-text"><small>Open to</small><span>Females only</span></div>
+            </div>
+          </div>
+          <div class="ac-cta">
+            <a href="#register" class="btn btn-primary">Register Now</a>
+            <a href="contact.html" class="btn btn-outline">Ask a Question</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hifth Programme -->
+  <div class="ac" data-cat="hifth">
+    <div class="ac-head" onclick="toggleAc(this)">
+      <div class="ac-icon">🌙</div>
+      <div class="ac-title">
+        <span class="eyebrow">Part-Time · Hifth</span>
+        <h3>Ladies Hifth Programme</h3>
+        <div class="ac-meta-row">
+          <span class="ac-pill">4 Streams available</span>
+          <span class="ac-pill">In-person only</span>
+        </div>
+      </div>
+      <div class="ac-toggle">+</div>
+    </div>
+    <div class="ac-divider"></div>
+    <div class="ac-body">
+      <div class="ac-grid">
+        <div class="ac-detail">
+          <h4>About this programme</h4>
+          <p>Pioneering an innovative Hifth structure designed for busy moms, mature students, and professionals. Students choose from one of four streams based on their memorisation goal.</p>
+          <h4>Four Streams</h4>
+          <ul>
+            <li><strong>Two Juz</strong> — Memorise Juz 29 & 30</li>
+            <li><strong>Oft-Recited Suwar</strong> — Mulk, Yasin, Sajdah, Waqi'ah, Rahman, Kahf</li>
+            <li><strong>Five Suwar</strong> — Juz 29, 30, 1, 2, 3</li>
+            <li><strong>Full Qur'ān</strong> — Complete 30 Juz</li>
+          </ul>
+          <h4>Method of instruction</h4>
+          <ul>
+            <li>Designated time in class to prepare Sabaq / New Lessons</li>
+            <li>Daily Nasihah + Tajwīd from the Murshid al-Qari</li>
+          </ul>
+          <h4>Prerequisites</h4>
+          <p>None — except a desire to learn the Book of Allah. Targeted at students aged 20+.</p>
+        </div>
+        <div>
+          <div class="ac-aside">
+            <div class="ac-aside-row">
+              <div class="ac-aside-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+              <div class="ac-aside-text"><small>Schedule</small><span>Mon–Thu · 8:20am–12:40pm</span></div>
+            </div>
+            <div class="ac-aside-row">
+              <div class="ac-aside-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <div class="ac-aside-text"><small>Location</small><span>Masjid al-Salaam, Athlone<br/><em>In-person only</em></span></div>
+            </div>
+            <div class="ac-aside-row">
+              <div class="ac-aside-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+              <div class="ac-aside-text"><small>2026 Dates</small><span>26 Jan – 27 Nov 2026</span></div>
+            </div>
+            <div class="ac-aside-row">
+              <div class="ac-aside-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+              <div class="ac-aside-text"><small>Fees</small><span>R300 registration · R900/month (Feb–Dec)</span></div>
+            </div>
+          </div>
+          <div class="ac-cta">
+            <a href="#register" class="btn btn-primary">Register Now</a>
+            <a href="contact.html" class="btn btn-outline">Ask a Question</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Thursday Dawrah -->
+  <div class="ac" data-cat="arabic">
+    <div class="ac-head" onclick="toggleAc(this)">
+      <div class="ac-icon">📜</div>
+      <div class="ac-title">
+        <span class="eyebrow">Weekly · Ongoing</span>
+        <h3>Thursday Arabic Dawrah — The Sealed Nectar</h3>
+        <div class="ac-meta-row">
+          <span class="ac-pill">Ladies only</span>
+          <span class="ac-pill">Online + In-person</span>
+        </div>
+      </div>
+      <div class="ac-toggle">+</div>
+    </div>
+    <div class="ac-divider"></div>
+    <div class="ac-body">
+      <div class="ac-grid">
+        <div class="ac-detail">
+          <h4>About this gathering</h4>
+          <p>A weekly ladies-only gathering studying Al-Rahīq Al-Makhtūm (The Sealed Nectar) — awarded first prize out of 171 manuscripts by the Muslim World League in 1979. Accompanied by selected excerpts from Fiqh al-Sīrah by Shaykh Ramadān al-Būtī.</p>
+          <h4>Course objectives</h4>
+          <ul>
+            <li>Deepen your love for Rasulullah ﷺ</li>
+            <li>Learn about his remarkable life, teachings, and character</li>
+            <li>Embody his noble traits and qualities in daily life</li>
+          </ul>
+        </div>
+        <div>
+          <div class="ac-aside">
+            <div class="ac-aside-row">
+              <div class="ac-aside-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+              <div class="ac-aside-text"><small>Schedule</small><span>Thursdays · 9:00am–12:30pm</span></div>
+            </div>
+            <div class="ac-aside-row">
+              <div class="ac-aside-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <div class="ac-aside-text"><small>Location</small><span>Masjid al-Salaam, Athlone + Zoom<br/>Recordings available</span></div>
+            </div>
+          </div>
+          <div class="ac-cta">
+            <a href="mailto:baseerahinstitute.sa@gmail.com?subject=Thursday Dawrah Registration" class="btn btn-primary">Register</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Take a Leap to Speak -->
+  <div class="ac" data-cat="short arabic">
+    <div class="ac-head" onclick="toggleAc(this)">
+      <div class="ac-icon">💬</div>
+      <div class="ac-title">
+        <span class="eyebrow">6-Week Course · Short Course</span>
+        <h3>Take a Leap to Speak — Conversational Arabic</h3>
+        <div class="ac-meta-row">
+          <span class="ac-pill">R750</span>
+          <span class="ac-pill">Book included</span>
+          <span class="ac-pill">Trusted by 2500+</span>
+        </div>
+      </div>
+      <div class="ac-toggle">+</div>
+    </div>
+    <div class="ac-divider"></div>
+    <div class="ac-body">
+      <div class="ac-grid">
+        <div class="ac-detail">
+          <h4>About this course</h4>
+          <p>A practical, conversation-based Arabic course designed especially for women, focused on helping you actually speak Arabic in your everyday life — from Lesson 1. Facilitated by Shaykhah Rukayya Samsodien.</p>
+          <h4>What you'll learn</h4>
+          <ul>
+            <li>Introduce yourself with confidence</li>
+            <li>Ask & answer everyday questions</li>
+            <li>Name fruits, groceries, describe your home</li>
+            <li>Masculine & feminine words in context</li>
+            <li>Real conversations from the very first session</li>
+          </ul>
+          <h4>Why it matters</h4>
+          <p>Imagine visiting the Holy Lands and actually speaking to people. Welcoming an Arab sister into your home in her own language. This course makes that possible.</p>
+        </div>
+        <div>
+          <div class="ac-aside">
+            <div class="ac-aside-row">
+              <div class="ac-aside-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+              <div class="ac-aside-text"><small>Schedule</small><span>Sundays · 9:00–11:00am<br/>7 practical lessons</span></div>
+            </div>
+            <div class="ac-aside-row">
+              <div class="ac-aside-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <div class="ac-aside-text"><small>Location</small><span>Masjid us-Salaam, Athlone<br/>Online & in-person</span></div>
+            </div>
+            <div class="ac-aside-row">
+              <div class="ac-aside-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+              <div class="ac-aside-text"><small>Fee</small><span>R750 total · payable in 2 parts<br/>Muhadathah Workbook included</span></div>
+            </div>
+          </div>
+          <div class="ac-cta">
+            <a href="#register" class="btn btn-primary">Register Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Aqidah Course -->
+  <div class="ac" data-cat="short">
+    <div class="ac-head" onclick="toggleAc(this)">
+      <div class="ac-icon">✨</div>
+      <div class="ac-title">
+        <span class="eyebrow">4-Week · Short Course</span>
+        <h3>4-Week Aqīdah Course (Pt.1 & Pt.2)</h3>
+        <div class="ac-meta-row">
+          <span class="ac-pill">R350 per part</span>
+          <span class="ac-pill">Sundays</span>
+        </div>
+      </div>
+      <div class="ac-toggle">+</div>
+    </div>
+    <div class="ac-divider"></div>
+    <div class="ac-body">
+      <div class="ac-grid">
+        <div class="ac-detail">
+          <h4>Part 1 — Attributes of the Divine</h4>
+          <p>Jowharat al-Tawhid: a study of the Attributes of Allah. Runs July 2026.</p>
+          <h4>Part 2 — Attributes of the Prophets & the Afterlife</h4>
+          <p>Continuing from Part 1. Runs August 2026. Both parts can be taken independently.</p>
+        </div>
+        <div>
+          <div class="ac-aside">
+            <div class="ac-aside-row">
+              <div class="ac-aside-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+              <div class="ac-aside-text"><small>Schedule</small><span>Sundays · 9:00–11:00am</span></div>
+            </div>
+            <div class="ac-aside-row">
+              <div class="ac-aside-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/></svg></div>
+              <div class="ac-aside-text"><small>Dates</small><span>Pt.1: 26 Jul · Pt.2: 30 Aug</span></div>
+            </div>
+            <div class="ac-aside-row">
+              <div class="ac-aside-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+              <div class="ac-aside-text"><small>Fee</small><span>R350 per part</span></div>
+            </div>
+          </div>
+          <div class="ac-cta">
+            <a href="#register" class="btn btn-primary">Register</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Free Dowrahs -->
+  <div class="ac" data-cat="free">
+    <div class="ac-head" onclick="toggleAc(this)">
+      <div class="ac-icon">🌿</div>
+      <div class="ac-title">
+        <span class="eyebrow">Free Events · 2026</span>
+        <h3>Special Dowrahs — Dhul Hijjah & Rabi Al-Awwal</h3>
+        <div class="ac-meta-row">
+          <span class="ac-pill gold">Free</span>
+          <span class="ac-pill">Open to all</span>
+        </div>
+      </div>
+      <div class="ac-toggle">+</div>
+    </div>
+    <div class="ac-divider"></div>
+    <div class="ac-body">
+      <div class="ac-detail">
+        <h4>Dhul Hijjah Dowrah — 23 May 2026</h4>
+        <p>A historical walk through the Sacred Lands. Saturday, 1pm – Asr. Free to attend.</p>
+        <h4>Rabi Al-Awwal Dowrah — 23 Aug 2026</h4>
+        <p>The Daughters of Rasulullah ﷺ & their Mother RA. Sunday 9am–12pm. Free to attend.</p>
+      </div>
+      <div class="ac-cta" style="margin-top:16px">
+        <a href="contact.html" class="btn btn-outline">Register Interest</a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /courses-list -->
+```
+
+  </div>
+</section>
+
+<!-- Registration Form -->
+
+<div class="wave" style="background:var(--cream)">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,20 C480,60 960,0 1440,40 L1440,60 L0,60 Z" fill="#F2EDE4"/>
+  </svg>
+</div>
+
+<section class="reg-section" id="register">
+  <div class="wrap">
+    <div class="reg-grid">
+      <div class="reg-text reveal">
+        <span class="eyebrow">Enrol Today</span>
+        <h2>Ready to begin?</h2>
+        <p>Fill in the form and we'll be in touch to confirm your registration and share payment details. Monthly fees are due by the 3rd of each month.</p>
+        <br/>
+        <p style="font-size:14px;color:var(--text-light);line-height:1.8">
+          <strong style="color:var(--text-mid)">Payment methods accepted:</strong><br/>
+          EFT — FNB · Baseerah Institute · Acc: 62897506641 · Branch: 203 109<br/>
+          SnapScan · PayPal (paypal.me/RSamsodien)
+        </p>
+      </div>
+      <div class="form-card reveal">
+        <form name="course-registration" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="course-registration"/>
+          <p style="display:none"><input name="bot-field"/></p>
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name *</label>
+              <input type="text" name="first_name" required placeholder="Aisha"/>
+            </div>
+            <div class="form-group">
+              <label>Last Name *</label>
+              <input type="text" name="last_name" required placeholder="Smith"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" name="email" required placeholder="you@example.com"/>
+          </div>
+          <div class="form-group">
+            <label>WhatsApp / Phone *</label>
+            <input type="tel" name="phone" required placeholder="+27 ..."/>
+          </div>
+          <div class="form-group">
+            <label>Course / Programme *</label>
+            <select name="course" required>
+              <option value="">Select a course...</option>
+              <option>Arabic Mastery Programme (2-Year)</option>
+              <option>Ladies Hifth Programme</option>
+              <option>Thursday Arabic Dawrah</option>
+              <option>Take a Leap to Speak (Conversational Arabic)</option>
+              <option>4-Week Aqīdah Course — Part 1</option>
+              <option>4-Week Aqīdah Course — Part 2</option>
+              <option>Dhul Hijjah Dowrah (Free)</option>
+              <option>Rabi Al-Awwal Dowrah (Free)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>In-person or Online?</label>
+            <select name="attendance">
+              <option>In-person (Athlone)</option>
+              <option>Online (Zoom)</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Any questions or notes?</label>
+            <textarea name="message" placeholder="Optional..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">Submit Registration</button>
+          <p class="form-note">We'll confirm your registration within 1–2 business days. جزاكم الله خيرًا</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+
+<footer>
+  <div class="wrap">
+    <div class="ftop">
+      <div class="fb">
+        <img src="logo-white.png" alt="Baseerah Institute"/>
+        <p>A female-led Islamic institution in Cape Town. Founded 2016 by Shaykhah Rukayya Samsodien.</p>
+        <div class="fsoc">
+          <a href="https://instagram.com/baseerahinstitute" class="fs" target="_blank" aria-label="Instagram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,.5)" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="fc">
+        <h5>Programmes</h5>
+        <ul>
+          <li><a href="courses.html">Arabic Mastery</a></li>
+          <li><a href="courses.html">Hifth Programme</a></li>
+          <li><a href="courses.html">Thursday Dawrah</a></li>
+          <li><a href="courses.html">Take a Leap to Speak</a></li>
+        </ul>
+      </div>
+      <div class="fc">
+        <h5>Institute</h5>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="about.html#teacher">Shaykhah Rukayya</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© 2026 Baseerah Institute · NPC 2026/317298/08</span>
+      <span><a href="mailto:baseerahinstitute.sa@gmail.com">baseerahinstitute.sa@gmail.com</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav
+  const hamburger=document.getElementById('hamburger');
+  const mobMenu=document.getElementById('mobMenu');
+  const mobLinks=document.querySelectorAll('.mob-link');
+  hamburger.addEventListener('click',()=>{
+    const o=mobMenu.classList.toggle('open');
+    hamburger.classList.toggle('open');
+    document.body.style.overflow=o?'hidden':'';
+  });
+  mobLinks.forEach(l=>l.addEventListener('click',()=>{
+    mobMenu.classList.remove('open');hamburger.classList.remove('open');document.body.style.overflow='';
+  }));
+
+  // Accordion
+  function toggleAc(head){
+    const ac=head.closest('.ac');
+    const isOpen=ac.classList.contains('open');
+    document.querySelectorAll('.ac.open').forEach(a=>a.classList.remove('open'));
+    if(!isOpen)ac.classList.add('open');
+  }
+
+  // Filter tabs
+  document.querySelectorAll('.ftab').forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('active'));
+      tab.classList.add('active');
+      const f=tab.dataset.filter;
+      document.querySelectorAll('.ac').forEach(ac=>{
+        ac.style.display=(f==='all'||ac.dataset.cat.includes(f))?'':'none';
+      });
+    });
+  });
+
+  // Reveal
+  const obs=new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}}),{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>
