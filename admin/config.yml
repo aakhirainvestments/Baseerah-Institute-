@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: YOUR-GITHUB-USERNAME/YOUR-REPO-NAME   # ← replace this
+  repo: aakhirainvestments/Baseerah-intitute-   # ← replace this
   branch: main
 
 media_folder: "images/uploads"
