@@ -1,0 +1,254 @@
+backend:
+  name: github
+  repo: YOUR-GITHUB-USERNAME/YOUR-REPO-NAME   # ← replace this
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# Optional: brand the CMS slightly
+locale: "en"
+
+collections:
+
+  # ─── COURSES ───────────────────────────────────────────
+  - name: "courses"
+    label: "Courses"
+    label_singular: "Course"
+    folder: "_data/courses"
+    create: true
+    slug: "{{slug}}"
+    format: json
+    fields:
+      - { label: "Course Title", name: "title", widget: "string" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["arabic", "hifth", "short", "free"]
+      - { label: "Eyebrow Label", name: "eyebrow", widget: "string", hint: "e.g. '2-Year Course · Arabic'" }
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["active", "upcoming", "closed", "waitlist"]
+        default: "active"
+      - { label: "Icon (emoji)", name: "icon", widget: "string", default: "📖" }
+      - label: "Flagship / Featured"
+        name: "featured"
+        widget: "boolean"
+        default: false
+      - label: "Fees"
+        name: "fees"
+        widget: "object"
+        fields:
+          - { label: "Registration Fee", name: "registration", widget: "string", hint: "e.g. R300" }
+          - { label: "Monthly Fee", name: "monthly", widget: "string", hint: "e.g. R800/month or leave blank" }
+          - { label: "Once-Off Fee", name: "once_off", widget: "string", hint: "e.g. R750 or leave blank" }
+          - { label: "International Fee", name: "international", widget: "string", required: false }
+      - label: "Schedule"
+        name: "schedule"
+        widget: "object"
+        fields:
+          - { label: "Days", name: "days", widget: "string", hint: "e.g. Mon–Wed" }
+          - { label: "Times", name: "times", widget: "string", hint: "e.g. 8:20am–12:40pm" }
+      - label: "Location"
+        name: "location"
+        widget: "object"
+        fields:
+          - { label: "Venue", name: "venue", widget: "string", default: "Masjid al-Salaam, Athlone" }
+          - label: "Attendance Mode"
+            name: "mode"
+            widget: "select"
+            options: ["In-person only", "Online only", "In-person + Online (Zoom)"]
+      - { label: "Open To", name: "open_to", widget: "string", default: "Females only" }
+      - { label: "Dates", name: "dates", widget: "string", hint: "e.g. 26 Jan – 27 Nov 2026" }
+      - { label: "About (description)", name: "about", widget: "text" }
+      - label: "Subjects / What You'll Learn"
+        name: "subjects"
+        widget: "list"
+        field: { label: "Item", name: "item", widget: "string" }
+      - { label: "Prerequisites", name: "prerequisites", widget: "text" }
+      - { label: "Published", name: "published", widget: "boolean", default: true }
+
+  # ─── EVENTS ────────────────────────────────────────────
+  - name: "events"
+    label: "Events"
+    label_singular: "Event"
+    folder: "_data/events"
+    create: true
+    slug: "{{slug}}"
+    format: json
+    fields:
+      - { label: "Event Title", name: "title", widget: "string" }
+      - { label: "Day (number)", name: "day", widget: "string", hint: "e.g. 23 or 'Oct'" }
+      - { label: "Month", name: "month", widget: "string", hint: "e.g. May" }
+      - { label: "Year", name: "year", widget: "string", default: "2026" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Time", name: "time", widget: "string", hint: "e.g. 9:00am–12:00pm" }
+      - label: "Fee"
+        name: "fee"
+        widget: "object"
+        fields:
+          - { label: "Amount", name: "amount", widget: "string", hint: "e.g. R350 or Free" }
+          - { label: "Is Free?", name: "is_free", widget: "boolean", default: false }
+      - { label: "Registration Link", name: "registration_link", widget: "string", required: false }
+      - { label: "Published", name: "published", widget: "boolean", default: true }
+
+  # ─── BLOG ──────────────────────────────────────────────
+  - name: "blog"
+    label: "Blog Posts"
+    label_singular: "Blog Post"
+    folder: "_data/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    format: json
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["arabic", "hifth", "fiqh", "institute"]
+      - { label: "Author", name: "author", widget: "string", default: "Shaykhah Rukayya Samsodien" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Summary / Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Body Content", name: "body", widget: "markdown" }
+      - { label: "Cover Image", name: "cover_image", widget: "image", required: false }
+      - { label: "Published", name: "published", widget: "boolean", default: false }
+
+  # ─── SHOP ──────────────────────────────────────────────
+  - name: "shop"
+    label: "Shop Products"
+    label_singular: "Product"
+    folder: "_data/shop"
+    create: true
+    slug: "{{slug}}"
+    format: json
+    fields:
+      - { label: "Product Title", name: "title", widget: "string" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["arabic", "hifth", "fiqh"]
+      - { label: "Eyebrow Label", name: "eyebrow", widget: "string", hint: "e.g. Conversational Arabic" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Cover Image", name: "cover_image", widget: "image", required: false }
+      - label: "Price"
+        name: "price"
+        widget: "object"
+        fields:
+          - { label: "Amount (e.g. 220)", name: "amount", widget: "number", required: false }
+          - { label: "Display Text (if TBC)", name: "display", widget: "string", default: "R220" }
+          - { label: "Price Confirmed?", name: "confirmed", widget: "boolean", default: true }
+      - label: "Badge"
+        name: "badge"
+        widget: "object"
+        fields:
+          - { label: "Badge Text", name: "text", widget: "string", hint: "e.g. Bestseller, New", required: false }
+          - label: "Badge Colour"
+            name: "color"
+            widget: "select"
+            options: ["teal", "gold", "new"]
+            required: false
+      - label: "Stock Status"
+        name: "stock"
+        widget: "select"
+        options: ["in_stock", "low_stock", "out_of_stock", "coming_soon"]
+        default: "in_stock"
+      - { label: "SKU / Internal Code", name: "sku", widget: "string", required: false }
+      - { label: "Published", name: "published", widget: "boolean", default: true }
+
+  # ─── ORDERS (read-only log — filled by your payment webhook) ───
+  - name: "orders"
+    label: "Orders"
+    label_singular: "Order"
+    folder: "_data/orders"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{fields.order_id}}"
+    format: json
+    fields:
+      - { label: "Order ID", name: "order_id", widget: "string" }
+      - { label: "Customer Name", name: "customer_name", widget: "string" }
+      - { label: "Email", name: "customer_email", widget: "string" }
+      - { label: "Phone / WhatsApp", name: "customer_phone", widget: "string" }
+      - { label: "Product Ordered", name: "product", widget: "string" }
+      - { label: "Quantity", name: "quantity", widget: "number", default: 1 }
+      - { label: "Amount (ZAR)", name: "amount", widget: "number" }
+      - label: "Payment Method"
+        name: "payment_method"
+        widget: "select"
+        options: ["Yoco", "PayFast", "EFT", "SnapScan", "PayPal"]
+      - label: "Payment Status"
+        name: "payment_status"
+        widget: "select"
+        options: ["pending", "paid", "failed", "refunded"]
+        default: "pending"
+      - { label: "Order Date", name: "order_date", widget: "datetime" }
+      - { label: "Collection Point", name: "collection_point", widget: "string", required: false }
+      - { label: "Notes", name: "notes", widget: "text", required: false }
+
+  # ─── COURSE REGISTRATIONS ───────────────────────────────
+  - name: "registrations"
+    label: "Course Registrations"
+    label_singular: "Registration"
+    folder: "_data/registrations"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{fields.student_name}}"
+    format: json
+    fields:
+      - { label: "Student Name", name: "student_name", widget: "string" }
+      - { label: "Email", name: "email", widget: "string" }
+      - { label: "Phone / WhatsApp", name: "phone", widget: "string" }
+      - { label: "Course", name: "course", widget: "string" }
+      - label: "Attendance Mode"
+        name: "attendance"
+        widget: "select"
+        options: ["In-person (Athlone)", "Online (Zoom)", "Not sure yet"]
+      - { label: "Registration Date", name: "date", widget: "datetime" }
+      - label: "Payment Status"
+        name: "payment_status"
+        widget: "select"
+        options: ["unpaid", "registration_fee_paid", "monthly_active", "overdue", "sponsored", "withdrawn"]
+        default: "unpaid"
+      - { label: "Amount Paid to Date (ZAR)", name: "amount_paid", widget: "number", default: 0 }
+      - { label: "Sponsor (if applicable)", name: "sponsor", widget: "string", required: false }
+      - { label: "Notes", name: "notes", widget: "text", required: false }
+
+  # ─── SITE SETTINGS (global editable content) ────────────
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "Global Info"
+        name: "global"
+        file: "_data/settings/global.json"
+        format: json
+        fields:
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Instagram Handle", name: "instagram", widget: "string" }
+          - { label: "Address Line 1", name: "address_line1", widget: "string" }
+          - { label: "Address Line 2", name: "address_line2", widget: "string" }
+          - { label: "FNB Account Number", name: "bank_account", widget: "string" }
+          - { label: "FNB Branch Code", name: "bank_branch", widget: "string" }
+          - { label: "PayPal Link", name: "paypal_link", widget: "string" }
+          - { label: "Announcement Bar Text", name: "announcement", widget: "string" }
+          - { label: "Announcement Bar Link URL", name: "announcement_link", widget: "string" }
+
+      - label: "Homepage Hero Slides"
+        name: "hero"
+        file: "_data/settings/hero.json"
+        format: json
+        fields:
+          - label: "Slides"
+            name: "slides"
+            widget: "list"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading Line 1", name: "heading1", widget: "string" }
+              - { label: "Heading Line 2 (teal)", name: "heading2", widget: "string" }
+              - { label: "Subtext", name: "subtext", widget: "text", required: false }
+              - { label: "Arabic Text", name: "arabic", widget: "string", required: false }
+              - { label: "Arabic Reference", name: "arabic_ref", widget: "string", required: false }
+              - { label: "Primary Button Text", name: "btn_primary_text", widget: "string" }
+              - { label: "Primary Button Link", name: "btn_primary_link", widget: "string" }
+              - { label: "Secondary Button Text", name: "btn_secondary_text", widget: "string", required: false }
+              - { label: "Secondary Button Link", name: "btn_secondary_link", widget: "string", required: false }
+              - { label: "Background Image", name: "bg_image", widget: "image" } 
